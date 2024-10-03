@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="BaseFilth">
+		<defName>WF_Filth_Holographic</defName>
+		<label>holographic energy</label>
+		<statBases>
+			<Beauty>-5</Beauty>
+			<Cleanliness>-1</Cleanliness>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Filth/Spatter</texPath>
+			<color>(150, 147, 120, 130)</color>
+		</graphicData>
+		<filth>
+			<ignoreFilthMultiplierStat>true</ignoreFilthMultiplierStat>
+			<disappearsInDays>0.5~0.7</disappearsInDays>
+			<rainWashes>true</rainWashes>
+			<cleaningWorkToReduceThickness>20</cleaningWorkToReduceThickness>
+			<canFilthAttach>false</canFilthAttach>
+			<cleaningSound>Interact_CleanFilth_Fluid</cleaningSound>
+		</filth>
+	</ThingDef>
+	
+</Defs>

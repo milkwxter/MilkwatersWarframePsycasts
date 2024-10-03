@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+  
+  <VanillaPsycastsExpanded.PsycasterPathDef MayRequire="VanillaExpanded.VPsycastsE">
+    <defName>VPE_WF_Ember</defName>
+    <label>ember</label>
+    <description>Harness the power of fire. Ember's heat deals high damage. She keeps a cool head when the battle is hot.</description>
+    <background>UI/PsycastPaths/PathBG_Ember</background>
+    <altBackground>UI/PsycastPaths/PathBG_Ember</altBackground>
+    <tab>Warframes</tab>
+    <tooltip>Harness the power of fire. Ember's heat deals high damage. She keeps a cool head when the battle is hot.</tooltip>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+  
+  <VanillaPsycastsExpanded.PsycasterPathDef MayRequire="VanillaExpanded.VPsycastsE">
+    <defName>VPE_WF_Excalibur</defName>
+    <label>excalibur</label>
+    <description>Excalibur epitomizes the warrior spirit. His master swordsmanship deals high damage. He is the embodiment of martial excellence.</description>
+    <background>UI/PsycastPaths/PathBG_Excalibur</background>
+    <altBackground>UI/PsycastPaths/PathBG_Excalibur</altBackground>
+    <tab>Warframes</tab>
+    <tooltip>Excalibur epitomizes the warrior spirit. His master swordsmanship deals high damage. He is the embodiment of martial excellence.</tooltip>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+  
+  <VanillaPsycastsExpanded.PsycasterPathDef MayRequire="VanillaExpanded.VPsycastsE">
+    <defName>VPE_WF_Loki</defName>
+    <label>loki</label>
+    <description>Loki knows the art of deception. The trickster employs stealth to sabotage enemies. Sow confusion.</description>
+    <background>UI/PsycastPaths/PathBG_Loki</background>
+    <altBackground>UI/PsycastPaths/PathBG_Loki</altBackground>
+    <tab>Warframes</tab>
+    <tooltip>Loki knows the art of deception. The trickster employs stealth to sabotage enemies. Sow confusion.</tooltip>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+  
+  <VanillaPsycastsExpanded.PsycasterPathDef MayRequire="VanillaExpanded.VPsycastsE">
+    <defName>VPE_WF_Rhino</defName>
+    <label>rhino</label>
+    <description>Rhino packs a punch. He boasts high survivability and crowd control. The wise would do well to stand clear when he charges.</description>
+    <background>UI/PsycastPaths/PathBG_Rhino</background>
+    <altBackground>UI/PsycastPaths/PathBG_Rhino</altBackground>
+    <tab>Warframes</tab>
+    <tooltip>Rhino packs a punch. He boasts high survivability and crowd control. The wise would do well to stand clear when he charges.</tooltip>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+  
+</Defs>
