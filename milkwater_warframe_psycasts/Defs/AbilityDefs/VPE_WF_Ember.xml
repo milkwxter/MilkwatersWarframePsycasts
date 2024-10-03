@@ -24,7 +24,7 @@
         <path>VPE_WF_Ember</path>
         <level>1</level>
         <order>1</order>
-        <psyfocusCost>0.01</psyfocusCost>
+        <psyfocusCost>0.05</psyfocusCost>
         <entropyGain>10</entropyGain>
       </li>
     </modExtensions>
