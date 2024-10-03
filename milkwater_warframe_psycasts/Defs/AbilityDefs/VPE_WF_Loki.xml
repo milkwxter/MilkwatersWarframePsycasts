@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Milkwater_Loki_Decoy</defName>
+    <label>decoy</label>
+    <description>Deploy a holographic copy of yourself that draws enemy fire.</description>
+    <iconPath>UI/Loki/decoy</iconPath>
+    <abilityClass>WarframePsycasts.Ability_Decoy</abilityClass>
+    <castTime>60</castTime>
+	<cooldownTime>180</cooldownTime>
+    <range>15</range>
+    <targetMode>Pawn</targetMode>
+	<needsTicking>True</needsTicking>
+	<targetingParameters>
+		<canTargetLocations>True</canTargetLocations>
+		<canTargetSelf>False</canTargetSelf>
+		<canTargetAnimals>False</canTargetAnimals>
+		<canTargetPawns>False</canTargetPawns>
+		<canTargetHumans>False</canTargetHumans>
+		<canTargetItems>False</canTargetItems>
+	</targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>VPE_WF_Loki</path>
+        <level>1</level>
+        <order>1</order>
+        <psyfocusCost>0.1</psyfocusCost>
+        <entropyGain>10</entropyGain>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
+
+<VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Milkwater_Loki_Invisibility</defName>
+    <label>invisibility</label>
+    <description>Camouflage yourself, becoming invisible to enemies.</description>
+    <iconPath>UI/Loki/invisibility</iconPath>
+    <abilityClass>WarframePsycasts.Ability_Invisibility</abilityClass>
+    <castTime>60</castTime>
+    <range>0</range>
+	<radius>0</radius>
+    <targetMode>Self</targetMode>
+	<durationTime>1800</durationTime>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>VPE_WF_Loki</path>
+        <level>2</level>
+        <order>1</order>
+        <psyfocusCost>0.1</psyfocusCost>
+        <entropyGain>50</entropyGain>
+		<prerequisites>
+			<li>Milkwater_Loki_Decoy</li>
+		</prerequisites>
+      </li>
+	  <li Class="VFECore.Abilities.AbilityExtension_Hediff">
+        <hediff>PsychicInvisibility</hediff>
+        <durationMultiplier>PsychicSensitivity</durationMultiplier>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
+  
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Milkwater_Loki_SwitchTeleport</defName>
+    <label>switch teleport</label>
+    <description>Instantaneously swap positions with a target, confusing them for 8 seconds.</description>
+    <iconPath>UI/Loki/switch_teleport</iconPath>
+    <abilityClass>WarframePsycasts.Ability_SwitchTeleport</abilityClass>
+    <castTime>60</castTime>
+    <range>15</range>
+    <targetMode>Pawn</targetMode>
+	<targetingParameters>
+		<canTargetLocations>False</canTargetLocations>
+		<canTargetSelf>False</canTargetSelf>
+		<canTargetAnimals>True</canTargetAnimals>
+		<canTargetPawns>True</canTargetPawns>
+		<canTargetHumans>True</canTargetHumans>
+		<canTargetItems>False</canTargetItems>
+	</targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>VPE_WF_Loki</path>
+        <level>3</level>
+        <order>1</order>
+        <psyfocusCost>0.04</psyfocusCost>
+        <entropyGain>25</entropyGain>
+		<prerequisites>
+			<li>Milkwater_Loki_Invisibility</li>
+		</prerequisites>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
+  
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Milkwater_Loki_RadialDisarm</defName>
+    <label>radial disarm</label>
+    <description>Lets forth a wave of energy, disrupting the weapons of enemies in range and forcing them to drop their weapons.</description>
+    <iconPath>UI/Loki/radial_disarm</iconPath>
+    <abilityClass>WarframePsycasts.Ability_RadialDisarm</abilityClass>
+    <castTime>60</castTime>
+    <range>5</range>
+	<radius>5</radius>
+    <targetMode>Self</targetMode>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>VPE_WF_Loki</path>
+        <level>4</level>
+        <order>1</order>
+        <psyfocusCost>0.33</psyfocusCost>
+        <entropyGain>100</entropyGain>
+		<prerequisites>
+			<li>Milkwater_Loki_SwitchTeleport</li>
+		</prerequisites>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
+
+</Defs>

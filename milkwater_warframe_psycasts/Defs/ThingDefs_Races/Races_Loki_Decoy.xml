@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="VPE_ConstructBase">
+		<defName>WF_Loki_Decoy</defName>
+		<label>loki decoy</label>
+		<description>A holographic decoy of a Loki psycaster pawn. Will disappear shortly after being casted or upon death.</description>
+		<statBases>
+			<ComfyTemperatureMin>-100</ComfyTemperatureMin>
+			<ComfyTemperatureMax>250</ComfyTemperatureMax>
+			<MarketValue>50</MarketValue>
+			<ArmorRating_Sharp>0.75</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.75</ArmorRating_Blunt>
+			<ArmorRating_Heat>1</ArmorRating_Heat>
+			<MoveSpeed>1</MoveSpeed>
+		</statBases>
+		<tools>
+			<li>
+				<label>head</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>5</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+			</li>
+			<li>
+				<label>fist</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>8</power>
+				<cooldownTime>1.8</cooldownTime>
+				<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+			</li>
+			<li>
+				<label>fist</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>8</power>
+				<cooldownTime>1.8</cooldownTime>
+				<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+			</li>
+		</tools>
+		<comps>
+			<li Class="AnimalBehaviours.CompProperties_InitialHediff">
+				<hediffname>VPE_NoPain</hediffname>
+				<hediffseverity>1</hediffseverity>
+			</li>
+			<li Class="AnimalBehaviours.CompProperties_DiseaseImmunity">
+				<hediffsToRemove>
+					<li>Animal_Plague</li>
+					<li>Animal_Flu</li>
+					<li>AB_AnimalSporesAllergy</li>
+				</hediffsToRemove>
+				<tickInterval>2000</tickInterval>
+			</li>
+			<li Class="AnimalBehaviours.CompProperties_DiseaseEventImmunity"></li>
+			<li Class="AnimalBehaviours.CompProperties_DieAfterPeriod">
+				<timeToDieInTicks>3600</timeToDieInTicks>
+				<effect>false</effect>
+			</li>
+		</comps>
+		<race>
+			<deathAction>
+				<workerClass>WarframePsycasts.DeathActionWorker_RemoveBody</workerClass>
+			</deathAction>
+			<body>Human</body>
+			<bloodDef>WF_Filth_Holographic</bloodDef>
+			<fleshType>WF_RobotFlesh</fleshType>
+			<lifeStageAges>
+				<li>
+					<minAge>0</minAge>
+					<def>AnimalAdult</def>
+				</li>
+			</lifeStageAges>
+		</race>
+	</ThingDef>
+	
+	<PawnKindDef ParentName="AnimalKindBase">
+		<defName>WF_Loki_Decoy</defName>
+		<label>loki decoy</label>
+		<race>WF_Loki_Decoy</race>
+		<combatPower>100</combatPower>
+		<canArriveManhunter>false</canArriveManhunter>
+		<ecoSystemWeight>1</ecoSystemWeight>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Things/Pawn/LokiDecoy/LokiDecoy</texPath>
+					<drawSize>1.2</drawSize>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</PawnKindDef>
+	
+	<!-- Quest Disabler -->
+	<AnimalBehaviours.AnimalsDisabledFromQuestsDef>
+		<defName>VPER_DisabledQuestAnimals</defName>
+		<disabledFromQuestsPawns>
+			<li>WF_Loki_Decoy</li>
+		</disabledFromQuestsPawns>
+	</AnimalBehaviours.AnimalsDisabledFromQuestsDef>
+</Defs>

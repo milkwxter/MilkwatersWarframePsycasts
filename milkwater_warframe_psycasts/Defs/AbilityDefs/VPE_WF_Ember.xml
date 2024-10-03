@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Milkwater_Ember_Fireball</defName>
+    <label>fireball</label>
+    <description>Charge and release a fiery projectile that explodes on contact.</description>
+    <iconPath>UI/Ember/fireball</iconPath>
+    <abilityClass>WarframePsycasts.Ability_Fireball</abilityClass>
+    <castTime>60</castTime>
+    <range>15</range>
+	<radius>3</radius>
+    <targetMode>Pawn</targetMode>
+	<targetingParameters>
+		<canTargetLocations>True</canTargetLocations>
+		<canTargetSelf>False</canTargetSelf>
+		<canTargetAnimals>True</canTargetAnimals>
+		<canTargetPawns>True</canTargetPawns>
+		<canTargetHumans>True</canTargetHumans>
+		<canTargetItems>False</canTargetItems>
+	</targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>VPE_WF_Ember</path>
+        <level>1</level>
+        <order>1</order>
+        <psyfocusCost>0.01</psyfocusCost>
+        <entropyGain>10</entropyGain>
+      </li>
+    </modExtensions>
+</VFECore.Abilities.AbilityDef>
+
+<ThingDef ParentName="BaseBullet">
+    <defName>Milkwater_Projectile_Fireball</defName>
+    <label>ember fireball</label>
+    <graphicData>
+      <texPath>Things/Projectile/Milkwater_Projectile_Fireball</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+	<projectile>
+      <speed>40</speed>
+      <damageDef>Flame</damageDef>
+      <damageAmountBase>20</damageAmountBase>
+      <explosionRadius>3</explosionRadius>
+      <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+      <preExplosionSpawnChance>1</preExplosionSpawnChance>
+    </projectile>
+  </ThingDef>
+
+<VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Milkwater_Ember_Immolation</defName>
+    <label>immolation</label>
+    <description>Protect yourself with flame armor, becoming more resistant to damage and immune to fire.</description>
+    <iconPath>UI/Ember/immolation</iconPath>
+    <abilityClass>WarframePsycasts.Ability_Immolation</abilityClass>
+    <castTime>60</castTime>
+    <range>0</range>
+	<radius>0</radius>
+    <targetMode>Self</targetMode>
+	<durationTime>7200</durationTime>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>VPE_WF_Ember</path>
+        <level>2</level>
+        <order>1</order>
+        <psyfocusCost>0.1</psyfocusCost>
+        <entropyGain>50</entropyGain>
+		<prerequisites>
+			<li>Milkwater_Ember_Fireball</li>
+		</prerequisites>
+      </li>
+	  <li Class="VFECore.Abilities.AbilityExtension_Hediff">
+        <hediff>WF_Ember_Immolation</hediff>
+        <durationMultiplier>PsychicSensitivity</durationMultiplier>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
+  
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Milkwater_Ember_FireBlast</defName>
+    <label>fire blast</label>
+    <description>Slam the ground to create a wave of incinerating plasma that knocks back enemies and strips their armor.</description>
+    <iconPath>UI/Ember/fire_blast</iconPath>
+    <abilityClass>WarframePsycasts.Ability_FireBlast</abilityClass>
+    <castTime>60</castTime>
+    <range>5</range>
+	<radius>5</radius>
+    <targetMode>Self</targetMode>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>VPE_WF_Ember</path>
+        <level>3</level>
+        <order>1</order>
+        <psyfocusCost>0.1</psyfocusCost>
+        <entropyGain>50</entropyGain>
+		<prerequisites>
+			<li>Milkwater_Ember_Immolation</li>
+		</prerequisites>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
+  
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Milkwater_Ember_Inferno</defName>
+    <label>inferno</label>
+    <description>Command flaming comets to crash down in front of yourself, engulfing enemies with a fire that can spread through their ranks.</description>
+    <iconPath>UI/Ember/inferno</iconPath>
+    <abilityClass>WarframePsycasts.Ability_Inferno</abilityClass>
+    <castTime>60</castTime>
+    <range>15</range>
+	<radius>7</radius>
+    <targetMode>Pawn</targetMode>
+	<needsTicking>True</needsTicking>
+	<targetingParameters>
+		<canTargetLocations>True</canTargetLocations>
+		<canTargetSelf>False</canTargetSelf>
+		<canTargetAnimals>True</canTargetAnimals>
+		<canTargetPawns>True</canTargetPawns>
+		<canTargetHumans>True</canTargetHumans>
+		<canTargetItems>False</canTargetItems>
+	</targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>VPE_WF_Ember</path>
+        <level>4</level>
+        <order>1</order>
+        <psyfocusCost>0.25</psyfocusCost>
+        <entropyGain>100</entropyGain>
+		<prerequisites>
+			<li>Milkwater_Ember_FireBlast</li>
+		</prerequisites>
+      </li>
+    </modExtensions>
+</VFECore.Abilities.AbilityDef>
+
+<ThingDef ParentName="BaseBullet">
+    <defName>Milkwater_Projectile_Comet</defName>
+    <label>ember comet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Milkwater_Projectile_Comet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>5</drawSize>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+	<projectile>
+      <speed>90</speed>
+      <damageDef>Flame</damageDef>
+      <damageAmountBase>40</damageAmountBase>
+      <explosionRadius>7</explosionRadius>
+      <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+      <preExplosionSpawnChance>1</preExplosionSpawnChance>
+    </projectile>
+  </ThingDef>
+  
+</Defs>

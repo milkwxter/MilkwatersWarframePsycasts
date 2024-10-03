@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_RadialBlind_Fleck</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>0.10</solidTime>
+    <fadeOutTime>0.20</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Effects/WF_RadialBlind_Fleck</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+  
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_Target_Fleck</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>0.30</solidTime>
+    <fadeOutTime>0.30</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Effects/WF_Target_Fleck</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+  
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_Slash_Fleck</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>0.30</solidTime>
+    <fadeOutTime>0.10</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Effects/WF_Slash_Fleck</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+  
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_Dust_Fleck</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>0.30</solidTime>
+    <fadeOutTime>0.30</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Effects/WF_Dust_Fleck</texPath>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+  </FleckDef>
+  
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_IronSkin_Fleck</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>0.30</solidTime>
+    <fadeOutTime>0.30</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Effects/WF_IronSkin_Fleck</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+  
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_Roar_Fleck</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>0.50</solidTime>
+    <fadeOutTime>0.30</fadeOutTime>
+    <graphicData>
+	  <drawSize>2</drawSize>
+      <texPath>Things/Effects/WF_Roar_Fleck</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+  
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_RoarBig_Fleck</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>1.80</solidTime>
+    <fadeOutTime>1.00</fadeOutTime>
+    <graphicData>
+	  <drawSize>20</drawSize>
+      <texPath>Things/Effects/WF_RoarBig_Fleck</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+  
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_Invisibility_Fleck</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>0.30</solidTime>
+    <fadeOutTime>0.30</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Effects/WF_Invisibility_Fleck</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+  
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_Disarm_Fleck</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>0.30</solidTime>
+    <fadeOutTime>0.30</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Effects/WF_Disarm_Fleck</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+  
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_RadialDisarmBig_Fleck</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>1.80</solidTime>
+    <fadeOutTime>1.00</fadeOutTime>
+    <graphicData>
+	  <drawSize>10</drawSize>
+      <texPath>Things/Effects/WF_RadialDisarmBig_Fleck</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+  
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_Flame_Fleck</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>0.30</solidTime>
+    <fadeOutTime>0.30</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Effects/WF_Flame_Fleck</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+  
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_Immolation_Fleck</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>0.30</solidTime>
+    <fadeOutTime>0.30</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Effects/WF_Immolation_Fleck</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+  
+</Defs>
