@@ -17,6 +17,7 @@
 		<canTargetPawns>True</canTargetPawns>
 		<canTargetHumans>True</canTargetHumans>
 		<canTargetItems>False</canTargetItems>
+		<canTargetBuildings>False</canTargetBuildings>
 	</targetingParameters>
     <modExtensions>
       <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
@@ -45,6 +46,7 @@
 		<canTargetPawns>True</canTargetPawns>
 		<canTargetHumans>True</canTargetHumans>
 		<canTargetItems>False</canTargetItems>
+		<canTargetBuildings>False</canTargetBuildings>
 	</targetingParameters>
     <modExtensions>
       <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
