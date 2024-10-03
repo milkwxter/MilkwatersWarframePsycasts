@@ -24,6 +24,10 @@ namespace WarframePsycasts
             // Create our projectile
             Projectile projectile = (Projectile)GenSpawn.Spawn(ThingDef.Named("Milkwater_Projectile_Fireball"), caster.Position, caster.Map);
             projectile.Launch(caster, caster.DrawPos, targets[0].Cell, targets[0].Cell, ProjectileHitFlags.IntendedTarget);
+
+            // cool effects
+            FleckMaker.Static(caster.Position, caster.Map, FleckDefOf.PsycastAreaEffect);
+            DefDatabase<SoundDef>.GetNamed("WF_Fireball_Sound").PlayOneShot(new TargetInfo(caster.Position, caster.Map, false));
         }
     }
 
