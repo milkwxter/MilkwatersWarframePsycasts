@@ -401,4 +401,104 @@
         </subSounds>
 </SoundDef>
 
+<SoundDef>
+        <defName>WF_DreadMirror_Sound</defName>
+        <context>MapOnly</context>
+        <eventNames/>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Clip">
+                        <clipPath>Abilities/Milkwater_Garuda_Dread_Mirror</clipPath>
+                    </li>
+                </grains>
+                <volumeRange>
+                    <min>35</min>
+                    <max>40</max>
+                </volumeRange>
+                <pitchRange>
+                    <min>1.2</min>
+                    <max>1.25</max>
+                </pitchRange>
+                <sustainLoop>False</sustainLoop>
+            </li>
+        </subSounds>
+</SoundDef>
+
+<SoundDef>
+        <defName>WF_BloodAltar_Sound</defName>
+        <context>MapOnly</context>
+        <eventNames/>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Clip">
+                        <clipPath>Abilities/Milkwater_Garuda_Blood_Altar</clipPath>
+                    </li>
+                </grains>
+                <volumeRange>
+                    <min>35</min>
+                    <max>40</max>
+                </volumeRange>
+                <pitchRange>
+                    <min>1.2</min>
+                    <max>1.25</max>
+                </pitchRange>
+                <sustainLoop>False</sustainLoop>
+            </li>
+        </subSounds>
+</SoundDef>
+
+<SoundDef>
+        <defName>WF_Bloodletting_Sound</defName>
+        <context>MapOnly</context>
+        <eventNames/>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Clip">
+                        <clipPath>Abilities/Milkwater_Garuda_Bloodletting</clipPath>
+                    </li>
+                </grains>
+                <volumeRange>
+                    <min>35</min>
+                    <max>40</max>
+                </volumeRange>
+                <pitchRange>
+                    <min>1.2</min>
+                    <max>1.25</max>
+                </pitchRange>
+                <sustainLoop>False</sustainLoop>
+            </li>
+        </subSounds>
+</SoundDef>
+
+<SoundDef>
+        <defName>WF_SeekingTalons_Sound</defName>
+        <context>MapOnly</context>
+        <eventNames/>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Clip">
+                        <clipPath>Abilities/Milkwater_Garuda_Seeking_Talons</clipPath>
+                    </li>
+                </grains>
+                <volumeRange>
+                    <min>35</min>
+                    <max>40</max>
+                </volumeRange>
+                <pitchRange>
+                    <min>1.2</min>
+                    <max>1.25</max>
+                </pitchRange>
+                <sustainLoop>False</sustainLoop>
+            </li>
+        </subSounds>
+</SoundDef>
+
 </Defs>
