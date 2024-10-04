@@ -20,4 +20,15 @@ namespace WarframePsycasts
             corpse.Destroy();
         }
     }
+
+    [DefOf]
+    public static class WF_ThingDefOf 
+    {
+        static WF_ThingDefOf()
+        {
+            DefOfHelper.EnsureInitializedInCtor(typeof(WF_ThingDefOf));
+        }
+
+        public static ThingDef BloodAltar;
+    }
 }

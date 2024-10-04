@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="BuildingBase">
+	<defName>BloodAltar</defName>
+	<thingClass>WarframePsycasts.Building_BloodAltar</thingClass>
+	<label>blood altar</label>
+	<!--
+	<GraphicData>
+		<drawSize>(1,1)</drawSize>
+		WF_GarudaSlash_Fleck.png
+		etc
+	-->
+	<altitudeLayer>Building</altitudeLayer>
+	<passability>Standable</passability>
+	
+	<!-- From here, copied from one of my other mods, so please check; I don't know the defs as well as I do the classes. -->
+	<castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.35</staticSunShadowHeight>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <pathCost>60</pathCost>
+    <statBases>
+        <MaxHitPoints>150</MaxHitPoints>
+        <WorkToBuild>2400</WorkToBuild>
+        <Mass>40</Mass>
+        <Flammability>1.0</Flammability>
+    </statBases>
+    <size>(1,1)</size>
+	
+	</ThingDef>
+	
+	
+</Defs>
+	

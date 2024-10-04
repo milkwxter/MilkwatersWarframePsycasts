@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 using RimWorld;
 using Verse;
-using VanillaPsycastsExpanded;
+using VFECore.Abilities;
 
 namespace WarframePsycasts
 {
@@ -29,6 +29,9 @@ namespace WarframePsycasts
         internal float currentDuration = 0f;
         public override void Cast(params GlobalTargetInfo[] targets)
         {
+            base.Cast(targets);
+            //Check for shield hediff
+            shieldIsOn = pawn.health.hediffSet.HasHediff(HediffDef.Named("WF_Garuda_DreadMirrorShield"));
             if (!shieldIsOn)
             {
                 //Skip to target
@@ -86,9 +89,41 @@ namespace WarframePsycasts
 
         public Building_BloodAltar altar = null;
         public const float strikeRadius = 7f;
-        //public const float healRate 
 
-        //public void 
+
+        public override void Cast(params GlobalTargetInfo[] targets)
+        {
+            base.Cast(targets);
+
+            //Check if there's already a blood altar present
+            //List<Building_BloodAltar> BAList = pawn.Map.listerBuildings.AllBuildingsColonistOfClass<Building_BloodAltar>().ToList();
+            //if(BAList.Count > 0)
+            //{
+            //    for(int i = 0; i < BAList.Count; i++)
+            //    {
+            //        if (BAList[i].owner == pawn)
+            //        {
+            //            return;
+            //        }
+            //    }
+            //}
+            //I don't like this.  Let's see if we can grey out the gizmo instead.  
+
+            pawn.Position = targets[0].Cell;
+            pawn.Notify_Teleported(false, true);
+            pawn.stances.SetStance(new Stance_Mobile());
+
+            targets[0].Pawn.health.GetOrAddHediff(HediffDef.Named("WF_Garuda_BloodAltarSpiked"));
+            //Spiked should add Movement max 0 and possibly manipulation max 0.  If that second one causes trouble, then manipulation max 5%
+
+            //Spawn Building_BloodAltar
+            //Building should be fully walkable, to prevent it from moving the host pawn out of the way.  
+            //Ability_SpawnBuilding -- I want to look into this
+            Thing thingAltar = GenSpawn.Spawn(WF_ThingDefOf.BloodAltar, targets[0].Cell, targets[0].Map, WipeMode.Vanish);
+            Building_BloodAltar altar = (Building_BloodAltar) thingAltar;
+            altar.owner = pawn;
+            altar.sourceAbility = this;
+        }
 
 
     }
