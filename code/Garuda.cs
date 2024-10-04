@@ -25,6 +25,8 @@ namespace WarframePsycasts
         */
 
         internal bool shieldIsOn = false;
+        internal const float maxDuration = 100f;
+        internal float currentDuration = 0f;
         public override void Cast(params GlobalTargetInfo[] targets)
         {
             if (!shieldIsOn)
@@ -40,8 +42,28 @@ namespace WarframePsycasts
                 targets[0].Pawn.TakeDamage(ripDamageInfo);
 
                 //Give caster a shield
-                //Maybe Hediff_Overshield
+                //Maybe Hediff_Overshield from VPE - Protector Tree - Overshield
 
+            }
+
+            else
+            {
+                //Cancel shield
+
+                //Launch projectile
+            }
+        }
+
+        public override void Tick()
+        {
+            base.Tick();
+
+            if(shieldIsOn)
+            {
+                if(--currentDuration <= 0)
+                {
+
+                }
             }
         }
     }
@@ -49,7 +71,7 @@ namespace WarframePsycasts
     public class Ability_BloodAltar : VFECore.Abilities.Ability
     {
         /*
-         * Spikes an enemy and creates a healing alter at their location.  I'm thinking along the lines of the "Divine Infusion" psycast from the Lightseeker mod's tree.
+         * Spikes an enemy and creates a healing alter at their location.  
          * See:
          *  Ability_GroupLink
          *      Hediff_GroupLink
@@ -63,6 +85,8 @@ namespace WarframePsycasts
         //}
 
         public Building_BloodAltar altar = null;
+        public const float strikeRadius = 7f;
+        //public const float healRate 
 
         //public void 
 
@@ -73,8 +97,8 @@ namespace WarframePsycasts
     {
 
         public Pawn owner;
+        public VFECore.Abilities.Ability sourceAbility;
         public List<Pawn> linkedPawns = new List<Pawn>();
-        public const float strikeRadius = 7f;
         public const float effectRadius = 5f;
         public void GetSurroundingPawns()
         {
@@ -104,13 +128,44 @@ namespace WarframePsycasts
                     linkedPawns.RemoveAt(i);
                     i--;
                 }
+
+//TODO: Need WF_Garuda_BloodAltarHealing based on VPE_DefOf.VPE_GainedVitality
+                HediffDef hediffDef = HediffDef.Named("WF_Garuda_BloodAltarHealing");
+                p.health.GetOrAddHediff(hediffDef);
             }
 
-            //Apply Hediff
+            
         }
     }
-    public class Hediff_BloodAlterHealing : Hediff
-    {
 
+    public class Ability_Bloodletting : VFECore.Abilities.Ability
+    {
+        /*
+         * Pawn sacrifices health for psyfocus.  Sounds simple enough; doubt it actually will be.  
+         * Per convo: "For bloodletting I was thinking the pawn would slash himself for like 10 damage, and gain x% psyfocus and removes bad hediffs"
+         * */
+        public const float selfDamage = 10f;
+
+        public override void Cast(params GlobalTargetInfo[] targets)
+        {
+            base.Cast(targets);
+
+            DamageInfo selfDamageInfo = new DamageInfo(DamageDefOf.Cut, selfDamage, 1f, -1f, pawn);
+
+            targets[0].Pawn.TakeDamage(selfDamageInfo);
+
+            //Two possible mods that could contain hints on methods for regaining psyfocus: Hemosage and Anima Obelisk
+
+        }
+
+    }
+
+    public class Ability_SeekingTalons : VFECore.Abilities.Ability
+    {
+        /*
+         * Radial slash.  Strong, but expensive.
+         * Probably won't be all that different from Radial Javelin, except all pawns in range, and range is centered on Garuda
+         * Maybe a semi-long chargeup, too
+         * */
     }
 }
