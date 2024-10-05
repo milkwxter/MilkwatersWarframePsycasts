@@ -4,12 +4,12 @@
 <ThingDef ParentName="OrbitalStrikeBase">
     <defName>WF_PhotonStrike</defName>
     <label>photon strike</label>
-    <thingClass>WarframePsycasts.PhotonStrikeCode.PhotonStrike</thingClass>
+    <thingClass>WarframePsycasts.PhotonStrike</thingClass>
     <comps>
       <li Class="CompProperties_OrbitalBeam">
         <width>2</width>
         <color>(93, 226, 231, 242)</color>
-        <sound>OrbitalBeam</sound>
+        <sound>WF_PhotonStrike_Sustainer</sound>
       </li>
       <li Class="CompProperties_CameraShaker">
         <mag>0.03</mag>

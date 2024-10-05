@@ -86,11 +86,45 @@
   <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
     <defName>Milkwater_Vauban_PhotonStrike</defName>
     <label>photon strike</label>
-    <description>Command a powerful photon strike to target a location.</description>
+    <description>Command a powerful photon strike to target a location for 2 seconds. It will burn everything it touches alive.</description>
     <iconPath>UI/Vauban/photon_strike</iconPath>
     <abilityClass>WarframePsycasts.Ability_PhotonStrike</abilityClass>
     <castTime>60</castTime>
 	<cooldownTime>1200</cooldownTime>
+    <range>15</range>
+	<radius>5</radius>
+    <targetMode>Location</targetMode>
+	<targetingParameters>
+		<canTargetLocations>True</canTargetLocations>
+		<canTargetSelf>False</canTargetSelf>
+		<canTargetAnimals>False</canTargetAnimals>
+		<canTargetPawns>False</canTargetPawns>
+		<canTargetHumans>False</canTargetHumans>
+		<canTargetItems>False</canTargetItems>
+		<canTargetBuildings>False</canTargetBuildings>
+	</targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>VPE_WF_Vauban</path>
+        <level>3</level>
+        <order>1</order>
+        <psyfocusCost>0.5</psyfocusCost>
+        <entropyGain>100</entropyGain>
+		<prerequisites>
+			<li>Milkwater_Vauban_Minelayer</li>
+		</prerequisites>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
+  
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Milkwater_Vauban_Bastille</defName>
+    <label>bastille</label>
+    <description>Erect a containment field to capture enemies and slow their actions down, as well as stripping their armor. Lasts for 20 seconds.</description>
+    <iconPath>UI/Vauban/bastille</iconPath>
+    <abilityClass>WarframePsycasts.Ability_Bastille</abilityClass>
+    <castTime>60</castTime>
+	<cooldownTime>1500</cooldownTime>
     <range>15</range>
 	<radius>5</radius>
     <targetMode>Location</targetMode>
@@ -107,32 +141,18 @@
     <modExtensions>
       <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
         <path>VPE_WF_Vauban</path>
-        <level>3</level>
+        <level>4</level>
         <order>1</order>
-        <psyfocusCost>0.15</psyfocusCost>
-        <entropyGain>25</entropyGain>
+        <psyfocusCost>0.20</psyfocusCost>
+        <entropyGain>50</entropyGain>
 		<prerequisites>
-			<li>Milkwater_Vauban_Minelayer</li>
+			<li>Milkwater_Vauban_PhotonStrike</li>
 		</prerequisites>
       </li>
+	  <li Class="VFECore.Abilities.AbilityExtension_Building">
+		<building>WF_Bastille</building>
+	  </li>
     </modExtensions>
   </VFECore.Abilities.AbilityDef>
-  
-  <ThingDef ParentName="BaseProjectileNeolithic">
-    <defName>Milkwater_Projectile_Photon_Beam</defName>
-    <label>photon beam</label>
-    <graphicData>
-      <texPath>Things/Projectile/Milkwater_Projectile_Photon_Beam</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-	  <drawSize>5</drawSize>
-    </graphicData>
-    <projectile>
-      <damageDef>Burn</damageDef>
-      <damageAmountBase>5</damageAmountBase>
-      <stoppingPower>0.2</stoppingPower>
-      <armorPenetrationBase>0.5</armorPenetrationBase>
-      <speed>70</speed>
-    </projectile>
-  </ThingDef>
   
 </Defs>
