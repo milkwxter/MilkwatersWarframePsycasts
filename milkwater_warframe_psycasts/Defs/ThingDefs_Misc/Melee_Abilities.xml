@@ -9,10 +9,10 @@
     <graphicData>
       <texPath>Things/Weapons/Milkwater_Exalted_Blade</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>2</drawSize>
+      <drawSize>1.8</drawSize>
     </graphicData>
     <soundInteract>Milkwater_Interact_Melee_Psycast</soundInteract>
-	<equippedAngleOffset>-65</equippedAngleOffset>
+	<equippedAngleOffset>25</equippedAngleOffset>
     <statBases>
       <Mass>1</Mass>
 	  <AccuracyTouch>0.7</AccuracyTouch>

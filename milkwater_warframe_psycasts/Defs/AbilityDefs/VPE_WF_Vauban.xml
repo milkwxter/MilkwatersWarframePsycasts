@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+<VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Milkwater_Vauban_TeslaNervos</defName>
+    <label>tesla nervos</label>
+    <description>Spawn a roller mine that targets an enemy. Upon reaching the enemy, the mine will explode in an electric fashion.</description>
+    <iconPath>UI/Vauban/tesla_nervos</iconPath>
+    <abilityClass>WarframePsycasts.Ability_TeslaNervos</abilityClass>
+    <castTime>60</castTime>
+	<cooldownTime>180</cooldownTime>
+    <range>15</range>
+	<radius>3</radius>
+    <targetMode>Pawn</targetMode>
+	<targetingParameters>
+		<canTargetLocations>False</canTargetLocations>
+		<canTargetSelf>False</canTargetSelf>
+		<canTargetAnimals>True</canTargetAnimals>
+		<canTargetPawns>True</canTargetPawns>
+		<canTargetHumans>True</canTargetHumans>
+		<canTargetItems>False</canTargetItems>
+		<canTargetBuildings>False</canTargetBuildings>
+	</targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>VPE_WF_Vauban</path>
+        <level>1</level>
+        <order>1</order>
+        <psyfocusCost>0.03</psyfocusCost>
+        <entropyGain>10</entropyGain>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
+  
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Milkwater_Vauban_Minelayer</defName>
+    <label>minelayer</label>
+    <description>Spawn a flechette orb mine at the desired position. It will fire upon enemies that come within range automatically.</description>
+    <iconPath>UI/Vauban/minelayer</iconPath>
+    <abilityClass>WarframePsycasts.Ability_Minelayer</abilityClass>
+    <castTime>60</castTime>
+	<cooldownTime>180</cooldownTime>
+    <range>15</range>
+	<radius>5</radius>
+    <targetMode>Location</targetMode>
+	<needsTicking>True</needsTicking>
+	<targetingParameters>
+		<canTargetLocations>True</canTargetLocations>
+		<canTargetSelf>False</canTargetSelf>
+		<canTargetAnimals>False</canTargetAnimals>
+		<canTargetPawns>False</canTargetPawns>
+		<canTargetHumans>False</canTargetHumans>
+		<canTargetItems>False</canTargetItems>
+		<canTargetBuildings>False</canTargetBuildings>
+	</targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>VPE_WF_Vauban</path>
+        <level>2</level>
+        <order>1</order>
+        <psyfocusCost>0.15</psyfocusCost>
+        <entropyGain>25</entropyGain>
+		<prerequisites>
+			<li>Milkwater_Vauban_TeslaNervos</li>
+		</prerequisites>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
+  
+  <ThingDef ParentName="BaseProjectileNeolithic">
+    <defName>Milkwater_Projectile_Flechette_Nail</defName>
+    <label>flechette orb nail</label>
+    <graphicData>
+      <texPath>Things/Projectile/Milkwater_Projectile_Nail</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Stab</damageDef>
+      <damageAmountBase>5</damageAmountBase>
+      <stoppingPower>0.2</stoppingPower>
+      <armorPenetrationBase>0.5</armorPenetrationBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+  
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>Milkwater_Vauban_PhotonStrike</defName>
+    <label>photon strike</label>
+    <description>Command a powerful photon strike to target a location.</description>
+    <iconPath>UI/Vauban/photon_strike</iconPath>
+    <abilityClass>WarframePsycasts.Ability_PhotonStrike</abilityClass>
+    <castTime>60</castTime>
+	<cooldownTime>1200</cooldownTime>
+    <range>15</range>
+	<radius>5</radius>
+    <targetMode>Location</targetMode>
+	<needsTicking>True</needsTicking>
+	<targetingParameters>
+		<canTargetLocations>True</canTargetLocations>
+		<canTargetSelf>False</canTargetSelf>
+		<canTargetAnimals>False</canTargetAnimals>
+		<canTargetPawns>False</canTargetPawns>
+		<canTargetHumans>False</canTargetHumans>
+		<canTargetItems>False</canTargetItems>
+		<canTargetBuildings>False</canTargetBuildings>
+	</targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>VPE_WF_Vauban</path>
+        <level>3</level>
+        <order>1</order>
+        <psyfocusCost>0.15</psyfocusCost>
+        <entropyGain>25</entropyGain>
+		<prerequisites>
+			<li>Milkwater_Vauban_Minelayer</li>
+		</prerequisites>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
+  
+  <ThingDef ParentName="BaseProjectileNeolithic">
+    <defName>Milkwater_Projectile_Photon_Beam</defName>
+    <label>photon beam</label>
+    <graphicData>
+      <texPath>Things/Projectile/Milkwater_Projectile_Photon_Beam</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>5</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>Burn</damageDef>
+      <damageAmountBase>5</damageAmountBase>
+      <stoppingPower>0.2</stoppingPower>
+      <armorPenetrationBase>0.5</armorPenetrationBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+  
+</Defs>

@@ -2,12 +2,12 @@
 <ModMetaData>
 	<name>Vanilla Psycasts Expanded Add-on - Warframe</name>
 	<author>Milkwater</author>
-	<description>Adds 3 brand new Vanilla Psycasts Expanded psycast trees to Rimworld, based on different warframes from the game, Warframe. Each tree has 4 different psycasts.\n
+	<description>Adds 4 brand new Vanilla Psycasts Expanded psycast trees to Rimworld, based on different warframes from the game, Warframe. Each tree has 4 different psycasts.\n
 Currently features:\n
+- Ember tree\n   - Fireball\n   - Immolation\n   - Fire Blast\n   - Inferno\n
 - Excalibur tree\n   - Slash dash\n   - Radial blind\n   - Radial javelin\n   - Exalted blade\n
 - Loki tree\n   - Decoy\n   - Invisibility\n   - Switch teleport\n   - Radial disarm\n
-- Rhino tree\n   - Rhino charge\n   - Iron skin\n   - Roar\n   - Rhino stomp
-	</description>
+- Rhino tree\n   - Rhino charge\n   - Iron skin\n   - Roar\n   - Rhino stomp</description>
 	<supportedVersions>
 		<li>1.5</li>
 	</supportedVersions>
