@@ -69,6 +69,9 @@ namespace WarframePsycasts
             // epic loop
             foreach (IntVec3 cell in GenRadial.RadialCellsAround(caster.Position, 5f, true))
             {
+                // stay in bounds
+                if (!cell.InBounds(caster.Map)) continue;
+
                 // cool effect
                 FleckMaker.Static(cell, caster.Map, DefDatabase<FleckDef>.GetNamed("WF_Flame_Fleck"));
 

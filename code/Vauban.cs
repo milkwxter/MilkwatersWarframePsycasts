@@ -1,17 +1,12 @@
 ﻿using RimWorld.Planet;
 using RimWorld;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Verse;
 using Verse.Sound;
 using Verse.AI;
-using Verse.Noise;
-using UnityEngine.SocialPlatforms;
+using VFECore.Abilities;
+using System.Linq;
 using UnityEngine;
-using WarframePsycasts.PhotonStrikeCode;
 
 namespace WarframePsycasts
 {
@@ -49,7 +44,7 @@ namespace WarframePsycasts
         // ability 2: minelayer
         // throw a flechette orb down, which will then activate and shoot nearby enemies for a bit
 
-        Pawn flechetteOrb = null;
+        internal Pawn flechetteOrb = null;
         public override void Cast(params GlobalTargetInfo[] targets)
         {
             // what does this do
@@ -133,6 +128,166 @@ namespace WarframePsycasts
 
             // spawn it
             photonStrike.StartStrike();
+
+            // cool effects
+            FleckMaker.Static(base.pawn.Position, base.pawn.Map, FleckDefOf.PsycastAreaEffect);
+            DefDatabase<SoundDef>.GetNamed("WF_PhotonStrike_Sound").PlayOneShot(new TargetInfo(base.pawn.Position, base.pawn.Map, false));
+        }
+    }
+
+    public class PhotonStrike : OrbitalStrike // copied from PowerBeam, with values changed
+    {
+        public const float Radius = 5f;
+
+        private const int FiresStartedPerTick = 2;
+
+        private static readonly IntRange FlameDamageAmountRange = new IntRange(5, 15);
+
+        private static readonly IntRange CorpseFlameDamageAmountRange = new IntRange(5, 10);
+
+        private static List<Thing> tmpThings = new List<Thing>();
+
+        public override void StartStrike()
+        {
+            base.StartStrike();
+            MakePhotonStrikeMote(base.Position, base.Map);
+        }
+
+        public static void MakePhotonStrikeMote(IntVec3 cell, Map map)
+        {
+            Mote obj = (Mote)ThingMaker.MakeThing(ThingDef.Named("Mote_PhotonStrike"));
+            obj.exactPosition = cell.ToVector3Shifted();
+            obj.Scale = 10f;
+            obj.rotationRate = 1.2f;
+            GenSpawn.Spawn(obj, cell, map);
+        }
+
+        public override void Tick()
+        {
+            base.Tick();
+            if (!base.Destroyed)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    StartRandomFireAndDoFlameDamage();
+                }
+            }
+        }
+
+        private void StartRandomFireAndDoFlameDamage()
+        {
+            IntVec3 c = (from x in GenRadial.RadialCellsAround(base.Position, Radius, useCenter: true)
+                         where x.InBounds(base.Map)
+                         select x).RandomElementByWeight((IntVec3 x) => 1f - Mathf.Min(x.DistanceTo(base.Position) / 15f, 1f) + 0.05f);
+            FireUtility.TryStartFireIn(c, base.Map, Rand.Range(0.1f, 0.925f), instigator);
+            tmpThings.Clear();
+            tmpThings.AddRange(c.GetThingList(base.Map));
+            for (int i = 0; i < tmpThings.Count; i++)
+            {
+                int num = ((tmpThings[i] is Corpse) ? CorpseFlameDamageAmountRange.RandomInRange : FlameDamageAmountRange.RandomInRange);
+                Pawn pawn = tmpThings[i] as Pawn;
+                BattleLogEntry_DamageTaken battleLogEntry_DamageTaken = null;
+                if (pawn != null)
+                {
+                    battleLogEntry_DamageTaken = new BattleLogEntry_DamageTaken(pawn, RulePackDefOf.DamageEvent_PowerBeam, instigator as Pawn);
+                    Find.BattleLog.Add(battleLogEntry_DamageTaken);
+                }
+                tmpThings[i].TakeDamage(new DamageInfo(DamageDefOf.Flame, num, 0f, -1f, instigator, null, weaponDef)).AssociateWithLog(battleLogEntry_DamageTaken);
+            }
+            tmpThings.Clear();
+        }
+    }
+
+    public class Ability_Bastille : VFECore.Abilities.Ability
+    {
+        // ability 4: bastille
+        // spawn a containment field that slows enemies and strips their armor
+        // if a containment field is already active, turn it into a damaging vortex
+
+        Thing thing = null;
+        int tickCounter = 0;
+        static int ticksToSurvive = 0;
+
+        public override void Tick()
+        {
+            base.Tick();
+
+            // see if the buildings time is up
+            if (ticksToSurvive != 0 && tickCounter > ticksToSurvive)
+            {
+                Log.Message("Bastille should be destroyed now.");
+                FleckMaker.Static(thing.Position, thing.Map, FleckDefOf.PsycastAreaEffect);
+                DefDatabase<SoundDef>.GetNamed("WF_Bastille_Sound").PlayOneShot(new TargetInfo(thing.Position, thing.Map, false));
+                thing.Destroy();
+                tickCounter = 0;
+                return;
+            }
+
+            // see if the building exists, and if so, tick
+            if (thing == null) return;
+            else
+            {
+                if (tickCounter != 0 && Find.TickManager.TicksGame >= tickCounter)
+                {
+                    // stop ticking
+                    tickCounter = 0;
+
+                    // get all enemies nearby
+                    foreach (IntVec3 cell in GenRadial.RadialCellsAround(thing.Position, 5f, true))
+                    {
+                        if (!cell.InBounds(thing.Map)) continue;
+                        List<Thing> things = cell.GetThingList(thing.Map);
+                        foreach (Thing thing in things)
+                        {
+                            if (thing is Pawn pawn)
+                            {
+                                // Make sure only target living breathing enemies
+                                if (pawn.Dead || pawn.Downed) continue;
+                                if (pawn.Faction != null && !pawn.Faction.HostileTo(base.pawn.Faction)) continue;
+
+                                // add hediffs
+                                pawn.health.AddHediff(HediffDef.Named("WF_Generic_ArmorStrip"));
+                                pawn.health.AddHediff(HediffDef.Named("WF_Generic_Stasis"));
+                            }
+                        }
+                    }
+
+                    // do some more ticking
+                    Log.Message("Ticking works.");
+                    tickCounter = Find.TickManager.TicksGame + 20;
+                }
+            }
+        }
+
+        public override void Cast(params GlobalTargetInfo[] targets)
+        {
+            // what does this do
+            base.Cast(targets);
+
+            // get the building to spawn from the xml file
+            AbilityExtension_Building bastille = def.GetModExtension<AbilityExtension_Building>();
+            if (bastille == null)
+            {
+                return;
+            }
+
+            // create a bastille and spawn it
+            if (targets[0].Cell.GetFirstBuilding(targets[0].Map) != null) return;
+            thing = GenSpawn.Spawn(bastille.building, targets[0].Cell, targets[0].Map);
+            thing.SetFactionDirect(base.pawn.Faction);
+
+            // start ticking
+            tickCounter = Find.TickManager.TicksGame + 20;
+            ticksToSurvive = Find.TickManager.TicksGame + 1200;
+
+            // cool effects
+            FleckMaker.Static(base.pawn.Position, base.pawn.Map, FleckDefOf.PsycastAreaEffect);
+            DefDatabase<SoundDef>.GetNamed("WF_Bastille_Sound").PlayOneShot(new TargetInfo(base.pawn.Position, base.pawn.Map, false));
+            Mote obj = (Mote)ThingMaker.MakeThing(ThingDef.Named("Mote_Bastille"));
+            obj.exactPosition = targets[0].Cell.ToVector3Shifted();
+            obj.Scale = 10f;
+            obj.rotationRate = 1.2f;
+            GenSpawn.Spawn(obj, targets[0].Cell, targets[0].Map);
         }
     }
 }

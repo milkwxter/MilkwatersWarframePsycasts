@@ -36,8 +36,14 @@ namespace WarframePsycasts
             // iterate over traversal path
             foreach (IntVec3 tile in tiles)
             {
+                // stay in bounds
+                if (!tile.InBounds(caster.Map)) continue;
+
                 foreach (IntVec3 cell in GenRadial.RadialCellsAround(caster.Position, 2f, true))
                 {
+                    // stay in bounds
+                    if (!cell.InBounds(caster.Map)) continue;
+
                     // cool effect
                     FleckMaker.Static(cell, caster.Map, DefDatabase<FleckDef>.GetNamed("WF_Dust_Fleck"));
 
@@ -193,6 +199,9 @@ namespace WarframePsycasts
             Pawn caster = base.pawn;
             foreach (IntVec3 cell in GenRadial.RadialCellsAround(caster.Position, 5f, true))
             {
+                // stay in bounds
+                if (!cell.InBounds(caster.Map)) continue;
+
                 // cool effect
                 FleckMaker.Static(cell, caster.Map, DefDatabase<FleckDef>.GetNamed("WF_Dust_Fleck"));
 
