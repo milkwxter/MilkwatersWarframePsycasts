@@ -11,6 +11,8 @@ using static UnityEngine.GraphicsBuffer;
 using Verse.Sound;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
+using Verse.AI;
+using Verse.Noise;
 
 namespace WarframePsycasts
 {
@@ -87,6 +89,83 @@ namespace WarframePsycasts
 
                     // deal damage
                     pawn.TakeDamage(shocked);
+                }
+            }
+        }
+    }
+
+    public class Hediff_Radiation : HediffWithComps
+    {
+        public override void Tick()
+        {
+            base.Tick();
+
+            if (pawn.IsHashIntervalTick(180)) // Check every 180 ticks
+            {
+                // make sure pawn can actually attack first
+                if (base.pawn.DeadOrDowned)
+                {
+                    base.pawn.health.RemoveHediff(this);
+                }
+
+                // Find nearby pawns
+                var nearbyPawns = GenRadial.RadialDistinctThingsAround(pawn.Position, pawn.Map, 10f, true).OfType<Pawn>();
+                if (nearbyPawns.Count() == 0) return;
+
+                // Make them attack each other
+                foreach (var targetPawn in nearbyPawns)
+                {
+                    // make sure we target guys with a faction that is FRIENDLY to the guy with the hediff
+                    if (targetPawn.Faction != null && !targetPawn.Faction.HostileTo(base.pawn.Faction))
+                    {
+                        if (Rand.Chance(0.5f)) // 50% chance to attack FIRST target, 50% chane to move to next one and try again
+                        {
+                            // do a fleck
+                            FleckMaker.AttachedOverlay(base.pawn, DefDatabase<FleckDef>.GetNamed("WF_Radiation_Fleck"), new Vector3(0f, 0f, 0f));
+
+                            // make sure we make him shoot or melee depending on weapon
+                            if (base.pawn.equipment.Primary != null && base.pawn.equipment.Primary.def.IsRangedWeapon)
+                            {
+                                // Ranged attack
+                                Job job = JobMaker.MakeJob(JobDefOf.AttackStatic, targetPawn);
+                                job.maxNumStaticAttacks = 1; // Number of shots
+                                job.expiryInterval = 400; // Duration of the job
+                                base.pawn.jobs.TryTakeOrderedJob(job);
+                            }
+                            else
+                            {
+                                // Melee attack
+                                Job job = JobMaker.MakeJob(JobDefOf.AttackMelee, targetPawn);
+                                base.pawn.jobs.TryTakeOrderedJob(job);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public class Hediff_Healing : HediffWithComps
+    {
+        public override void Tick()
+        {
+            base.Tick();
+
+            if (pawn.IsHashIntervalTick(180)) // Check every 180 ticks / 3 seconds
+            {
+                // do a fleck
+                FleckMaker.AttachedOverlay(base.pawn, DefDatabase<FleckDef>.GetNamed("WF_Healing_Fleck"), new Vector3(0f, 0f, 0f));
+
+                // Tend a random injury 25% of times the hediff ticks
+                if (Rand.Chance(0.25f))
+                    TendUtility.DoTend(base.pawn, base.pawn, null);
+
+                // get list of injuries
+                List<Hediff_Injury> pawnsInjuries = base.pawn.health.hediffSet.hediffs.OfType<Hediff_Injury>().ToList();
+                foreach (var injury in pawnsInjuries)
+                {
+                    // give 1 more health to each injury
+                    injury.Heal(1f);
                 }
             }
         }

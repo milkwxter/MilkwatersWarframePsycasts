@@ -6,6 +6,7 @@
 		<label>incredible evasion</label>
 		<description>Because of a psychic ability, this pawn has an incredibly enhanced dodge chance.</description>
 		<hediffClass>Hediff</hediffClass>
+		<isBad>False</isBad>
 		<stages>
 		  <li>
 			<statOffsets>
@@ -21,6 +22,7 @@
 		<description>Because of a psychic ability, this pawn's armor has been stripped.</description>
 		<hediffClass>HediffWithComps</hediffClass>
 		<defaultLabelColor>(1, 0, 0)</defaultLabelColor>
+		<isBad>True</isBad>
 		<comps>
 		  <li Class="HediffCompProperties_Disappears">
 			<showRemainingTime>True</showRemainingTime>
@@ -44,6 +46,7 @@
 		<description>Because of a psychic ability, this pawn is unable to move or attack properly.</description>
 		<hediffClass>HediffWithComps</hediffClass>
 		<defaultLabelColor>(1, 0, 0)</defaultLabelColor>
+		<isBad>True</isBad>
 		<comps>
 		  <li Class="HediffCompProperties_Disappears">
 			<showRemainingTime>True</showRemainingTime>
@@ -56,6 +59,43 @@
 			  <MoveSpeed>-5.0</MoveSpeed>
 			  <MeleeCooldownFactor>2.0</MeleeCooldownFactor>
 			  <RangedCooldownFactor>2.0</RangedCooldownFactor>
+			</statOffsets>
+		  </li>
+        </stages>
+</HediffDef>
+
+<HediffDef ParentName="RoleStatBuff">
+		<defName>WF_Generic_Radiation</defName>
+		<label>radiation proc</label>
+		<description>Because of a psychic ability, this pawn's confusion will lead them to attack pawns of the same faction.</description>
+		<hediffClass>WarframePsycasts.Hediff_Radiation</hediffClass>
+		<defaultLabelColor>(1, 1, 0)</defaultLabelColor>
+		<isBad>True</isBad>
+		<comps>
+		  <li Class="HediffCompProperties_Disappears">
+			<showRemainingTime>True</showRemainingTime>
+			<disappearsAfterTicks>1200</disappearsAfterTicks>
+		  </li>
+		</comps>
+</HediffDef>
+
+<HediffDef ParentName="RoleStatBuff">
+		<defName>WF_Generic_Healing</defName>
+		<label>psychic healing</label>
+		<description>Because of a psychic ability, this pawn's healing is greatly accelerated.\nWounds have a chance to tend themselves.</description>
+		<hediffClass>WarframePsycasts.Hediff_Healing</hediffClass>
+		<defaultLabelColor>(0, 1, 0)</defaultLabelColor>
+		<isBad>False</isBad>
+		<comps>
+		  <li Class="HediffCompProperties_Disappears">
+			<showRemainingTime>True</showRemainingTime>
+			<disappearsAfterTicks>1200</disappearsAfterTicks>
+		  </li>
+		</comps>
+		<stages>
+		  <li>
+			<statOffsets>
+			  <InjuryHealingFactor>5.0</InjuryHealingFactor>
 			</statOffsets>
 		  </li>
         </stages>

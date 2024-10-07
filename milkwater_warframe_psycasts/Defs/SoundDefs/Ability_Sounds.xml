@@ -601,4 +601,104 @@
         </subSounds>
 </SoundDef>
 
+<SoundDef>
+        <defName>WF_Smite_Sound</defName>
+        <context>MapOnly</context>
+        <eventNames/>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Clip">
+                        <clipPath>Abilities/Milkwater_Oberon_Smite</clipPath>
+                    </li>
+                </grains>
+                <volumeRange>
+                    <min>35</min>
+                    <max>40</max>
+                </volumeRange>
+                <pitchRange>
+                    <min>1.2</min>
+                    <max>1.25</max>
+                </pitchRange>
+                <sustainLoop>False</sustainLoop>
+            </li>
+        </subSounds>
+</SoundDef>
+
+<SoundDef>
+        <defName>WF_HallowedGround_Sound</defName>
+        <context>MapOnly</context>
+        <eventNames/>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Clip">
+                        <clipPath>Abilities/Milkwater_Oberon_Hallowed_Ground</clipPath>
+                    </li>
+                </grains>
+                <volumeRange>
+                    <min>35</min>
+                    <max>40</max>
+                </volumeRange>
+                <pitchRange>
+                    <min>1.2</min>
+                    <max>1.25</max>
+                </pitchRange>
+                <sustainLoop>False</sustainLoop>
+            </li>
+        </subSounds>
+</SoundDef>
+
+<SoundDef>
+        <defName>WF_Renewal_Sound</defName>
+        <context>MapOnly</context>
+        <eventNames/>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Clip">
+                        <clipPath>Abilities/Milkwater_Oberon_Renewal</clipPath>
+                    </li>
+                </grains>
+                <volumeRange>
+                    <min>35</min>
+                    <max>40</max>
+                </volumeRange>
+                <pitchRange>
+                    <min>1.2</min>
+                    <max>1.25</max>
+                </pitchRange>
+                <sustainLoop>False</sustainLoop>
+            </li>
+        </subSounds>
+</SoundDef>
+
+<SoundDef>
+        <defName>WF_Reckoning_Sound</defName>
+        <context>MapOnly</context>
+        <eventNames/>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Clip">
+                        <clipPath>Abilities/Milkwater_Oberon_Reckoning</clipPath>
+                    </li>
+                </grains>
+                <volumeRange>
+                    <min>35</min>
+                    <max>40</max>
+                </volumeRange>
+                <pitchRange>
+                    <min>1.2</min>
+                    <max>1.25</max>
+                </pitchRange>
+                <sustainLoop>False</sustainLoop>
+            </li>
+        </subSounds>
+</SoundDef>
+
 </Defs>
