@@ -24,7 +24,7 @@
 		<comps>
 		  <li Class="HediffCompProperties_Disappears">
 			<showRemainingTime>True</showRemainingTime>
-			<disappearsAfterTicks>1800</disappearsAfterTicks>
+			<disappearsAfterTicks>1200</disappearsAfterTicks>
 		  </li>
 		</comps>
 		<stages>
@@ -33,6 +33,29 @@
 			  <ArmorRating_Sharp>-0.50</ArmorRating_Sharp>
 			  <ArmorRating_Blunt>-0.50</ArmorRating_Blunt>
 			  <ArmorRating_Heat>-0.50</ArmorRating_Heat>
+			</statOffsets>
+		  </li>
+        </stages>
+</HediffDef>
+
+<HediffDef ParentName="RoleStatBuff">
+		<defName>WF_Generic_Stasis</defName>
+		<label>psychic stasis</label>
+		<description>Because of a psychic ability, this pawn is unable to move or attack properly.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(1, 0, 0)</defaultLabelColor>
+		<comps>
+		  <li Class="HediffCompProperties_Disappears">
+			<showRemainingTime>True</showRemainingTime>
+			<disappearsAfterTicks>1200</disappearsAfterTicks>
+		  </li>
+		</comps>
+		<stages>
+		  <li>
+			<statOffsets>
+			  <MoveSpeed>-5.0</MoveSpeed>
+			  <MeleeCooldownFactor>2.0</MeleeCooldownFactor>
+			  <RangedCooldownFactor>2.0</RangedCooldownFactor>
 			</statOffsets>
 		  </li>
         </stages>

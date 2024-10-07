@@ -112,14 +112,10 @@ namespace WarframePsycasts
                             // cool effect
                             FleckMaker.Static(pawn.Position, pawn.Map, DefDatabase<FleckDef>.GetNamed("WF_Disarm_Fleck"));
 
-                            Log.Message("Pawn has a primary weapon: " + pawn.equipment.Primary.Label);
-
                             // drop it
                             ThingWithComps weapon = pawn.equipment.Primary;
                             pawn.equipment.TryDropEquipment(weapon, out ThingWithComps droppedWeapon, pawn.Position, false);
-                            Log.Message("Weapon dropped successfully");
                             pawn.equipment.Notify_EquipmentRemoved(droppedWeapon);
-                            Log.Message("Pawn notified that their equipment was removed.");
                         }
                     }
                 }

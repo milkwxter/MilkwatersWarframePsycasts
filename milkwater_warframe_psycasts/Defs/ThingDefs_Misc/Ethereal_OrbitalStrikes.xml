@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<ThingDef ParentName="OrbitalStrikeBase">
+    <defName>WF_PhotonStrike</defName>
+    <label>photon strike</label>
+    <thingClass>WarframePsycasts.PhotonStrike</thingClass>
+    <comps>
+      <li Class="CompProperties_OrbitalBeam">
+        <width>2</width>
+        <color>(93, 226, 231, 242)</color>
+        <sound>WF_PhotonStrike_Sustainer</sound>
+      </li>
+      <li Class="CompProperties_CameraShaker">
+        <mag>0.03</mag>
+      </li>
+    </comps>
+  </ThingDef>
+  
+</Defs>

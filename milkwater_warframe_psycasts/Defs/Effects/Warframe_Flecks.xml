@@ -136,4 +136,26 @@
     </graphicData>
   </FleckDef>
   
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_GaurdaSlash_Fleck</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>0.30</solidTime>
+    <fadeOutTime>0.30</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Effects/WF_GarudaSlash_Fleck</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+  
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_Electric_Fleck</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>0.30</solidTime>
+    <fadeOutTime>0.30</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Effects/WF_Electric_Fleck</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+  
 </Defs>

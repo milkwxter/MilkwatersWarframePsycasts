@@ -22,16 +22,6 @@
   </VanillaPsycastsExpanded.PsycasterPathDef>
   
   <VanillaPsycastsExpanded.PsycasterPathDef MayRequire="VanillaExpanded.VPsycastsE">
-    <defName>VPE_WF_Garuda</defName>
-    <label>garuda</label>
-    <description>Death's crimson maiden sharpens her talons. Garuda weaponizes the blood of her foes to deal high damage. Sanguine beauty complements her deadly power.</description>
-    <background>UI/PsycastPaths/PathBG_Garuda</background>
-    <altBackground>UI/PsycastPaths/PathBG_Garuda</altBackground>
-    <tab>Warframes</tab>
-    <tooltip>Death's crimson maiden sharpens her talons. Garuda weaponizes the blood of her foes to deal high damage. Sanguine beauty complements her deadly power.</tooltip>
-  </VanillaPsycastsExpanded.PsycasterPathDef>
-  
-  <VanillaPsycastsExpanded.PsycasterPathDef MayRequire="VanillaExpanded.VPsycastsE">
     <defName>VPE_WF_Loki</defName>
     <label>loki</label>
     <description>Loki knows the art of deception. The trickster employs stealth to sabotage enemies. Sow confusion.</description>
@@ -49,6 +39,16 @@
     <altBackground>UI/PsycastPaths/PathBG_Rhino</altBackground>
     <tab>Warframes</tab>
     <tooltip>Rhino packs a punch. He boasts high survivability and crowd control. The wise would do well to stand clear when he charges.</tooltip>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+  
+  <VanillaPsycastsExpanded.PsycasterPathDef MayRequire="VanillaExpanded.VPsycastsE">
+    <defName>VPE_WF_Vauban</defName>
+    <label>vauban</label>
+    <description>Vauban is the model of innovative technology. He deploys clever inventions to provide crowd control. His tenacity and focus make him formidable.</description>
+    <background>UI/PsycastPaths/PathBG_Vauban</background>
+    <altBackground>UI/PsycastPaths/PathBG_Vauban</altBackground>
+    <tab>Warframes</tab>
+    <tooltip>Vauban is the model of innovative technology. He deploys clever inventions to provide crowd control. His tenacity and focus make him formidable.</tooltip>
   </VanillaPsycastsExpanded.PsycasterPathDef>
   
 </Defs>

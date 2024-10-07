@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!-- Quest Disabler -->
+	<AnimalBehaviours.AnimalsDisabledFromQuestsDef>
+		<defName>VPE_WF_DisabledQuestAnimals</defName>
+		<disabledFromQuestsPawns>
+			<li>WF_Loki_Decoy</li>
+			<li>WF_Vauban_TeslaNervos</li>
+			<li>WF_Vauban_FlechetteOrb</li>
+		</disabledFromQuestsPawns>
+	</AnimalBehaviours.AnimalsDisabledFromQuestsDef>
+	
+</Defs>

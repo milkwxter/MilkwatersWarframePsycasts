@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	<ThingDef ParentName="VPE_ConstructBase">
-		<defName>WF_Loki_Decoy</defName>
-		<label>loki decoy</label>
-		<description>A holographic decoy of a Loki psycaster pawn. Will disappear shortly after being casted or upon death.</description>
+		<defName>WF_Vauban_FlechetteOrb</defName>
+		<label>flechette orb</label>
+		<description>A Flechette Orb mine. Upon spawning, it will shoot at nearby enemies every second its alive.</description>
 		<statBases>
 			<ComfyTemperatureMin>-100</ComfyTemperatureMin>
 			<ComfyTemperatureMax>250</ComfyTemperatureMax>
 			<MarketValue>50</MarketValue>
-			<ArmorRating_Sharp>0.75</ArmorRating_Sharp>
-			<ArmorRating_Blunt>0.75</ArmorRating_Blunt>
-			<ArmorRating_Heat>1</ArmorRating_Heat>
-			<MoveSpeed>1</MoveSpeed>
+			<ArmorRating_Sharp>0.50</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.50</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.50</ArmorRating_Heat>
+			<MoveSpeed>0</MoveSpeed>
 		</statBases>
 		<tools>
 			<li>
@@ -19,28 +19,10 @@
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
-				<power>5</power>
+				<power>2</power>
 				<cooldownTime>2</cooldownTime>
 				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
 				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-			</li>
-			<li>
-				<label>fist</label>
-				<capacities>
-					<li>Blunt</li>
-				</capacities>
-				<power>8</power>
-				<cooldownTime>1.8</cooldownTime>
-				<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
-			</li>
-			<li>
-				<label>fist</label>
-				<capacities>
-					<li>Blunt</li>
-				</capacities>
-				<power>8</power>
-				<cooldownTime>1.8</cooldownTime>
-				<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
 			</li>
 		</tools>
 		<comps>
@@ -82,27 +64,19 @@
 	</ThingDef>
 	
 	<PawnKindDef ParentName="AnimalKindBase">
-		<defName>WF_Loki_Decoy</defName>
-		<label>loki decoy</label>
-		<race>WF_Loki_Decoy</race>
+		<defName>WF_Vauban_FlechetteOrb</defName>
+		<label>flechette orb mine</label>
+		<race>WF_Vauban_FlechetteOrb</race>
 		<combatPower>100</combatPower>
 		<canArriveManhunter>false</canArriveManhunter>
 		<ecoSystemWeight>1</ecoSystemWeight>
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
-					<texPath>Things/Pawn/LokiDecoy/LokiDecoy</texPath>
-					<drawSize>1.2</drawSize>
+					<texPath>Things/Pawn/FlechetteOrb/Vauban_FlechetteOrb</texPath>
+					<drawSize>1</drawSize>
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
 	</PawnKindDef>
-	
-	<!-- Quest Disabler -->
-	<AnimalBehaviours.AnimalsDisabledFromQuestsDef>
-		<defName>VPER_DisabledQuestAnimals</defName>
-		<disabledFromQuestsPawns>
-			<li>WF_Loki_Decoy</li>
-		</disabledFromQuestsPawns>
-	</AnimalBehaviours.AnimalsDisabledFromQuestsDef>
 </Defs>
