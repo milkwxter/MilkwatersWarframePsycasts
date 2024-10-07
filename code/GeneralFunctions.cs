@@ -6,11 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Verse.AI.Group;
 using Verse;
-using System.Net;
-using static UnityEngine.GraphicsBuffer;
 using Verse.Sound;
-using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 namespace WarframePsycasts
 {
@@ -90,5 +86,16 @@ namespace WarframePsycasts
                 }
             }
         }
+    }
+
+    [DefOf]
+    public static class WF_ThingDefOf 
+    {
+        static WF_ThingDefOf()
+        {
+            DefOfHelper.EnsureInitializedInCtor(typeof(WF_ThingDefOf));
+        }
+
+        public static ThingDef BloodAltar;
     }
 }
