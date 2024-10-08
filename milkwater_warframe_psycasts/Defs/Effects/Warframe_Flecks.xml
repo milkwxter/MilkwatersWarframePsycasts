@@ -158,4 +158,62 @@
     </graphicData>
   </FleckDef>
   
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_Radiation_Fleck</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>0.30</solidTime>
+    <fadeOutTime>0.30</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Effects/WF_Radiation_Fleck</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+  
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_FlameHoly_Fleck</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>0.30</solidTime>
+    <fadeOutTime>0.30</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Effects/WF_FlameHoly_Fleck</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+  
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_Healing_Fleck</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <solidTime>0.30</solidTime>
+    <fadeOutTime>0.30</fadeOutTime>
+    <graphicData>
+      <texPath>Things/Effects/WF_Healing_Fleck</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+  
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_Renewal_Fleck</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+	<fadeInTime>0.20</fadeInTime>
+    <solidTime>0.70</solidTime>
+    <fadeOutTime>0.30</fadeOutTime>
+    <graphicData>
+	  <drawSize>10</drawSize>
+      <texPath>Things/Effects/WF_Renewal_Fleck</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+  
+  <FleckDef ParentName="FleckBase">
+    <defName>WF_Reckoning_Fleck</defName>
+    <altitudeLayer>Item</altitudeLayer>
+    <solidTime>0.50</solidTime>
+    <fadeOutTime>0.30</fadeOutTime>
+    <graphicData>
+	  <drawSize>10</drawSize>
+      <texPath>Things/Effects/WF_Reckoning_Fleck</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </FleckDef>
+  
 </Defs>

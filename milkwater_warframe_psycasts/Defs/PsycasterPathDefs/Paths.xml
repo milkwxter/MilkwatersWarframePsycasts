@@ -32,6 +32,16 @@
   </VanillaPsycastsExpanded.PsycasterPathDef>
   
   <VanillaPsycastsExpanded.PsycasterPathDef MayRequire="VanillaExpanded.VPsycastsE">
+    <defName>VPE_WF_Oberon</defName>
+    <label>oberon</label>
+    <description>Healing and suffering do Oberon's bidding. His command of the natural world supports allies. Boon to his friends, bane of his foes.</description>
+    <background>UI/PsycastPaths/PathBG_Oberon</background>
+    <altBackground>UI/PsycastPaths/PathBG_Oberon</altBackground>
+    <tab>Warframes</tab>
+    <tooltip>Healing and suffering do Oberon's bidding. His command of the natural world supports allies. Boon to his friends, bane of his foes.</tooltip>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+  
+  <VanillaPsycastsExpanded.PsycasterPathDef MayRequire="VanillaExpanded.VPsycastsE">
     <defName>VPE_WF_Rhino</defName>
     <label>rhino</label>
     <description>Rhino packs a punch. He boasts high survivability and crowd control. The wise would do well to stand clear when he charges.</description>

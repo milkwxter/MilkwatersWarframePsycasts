@@ -23,4 +23,26 @@
     </subSounds>
   </SoundDef>
   
+  <SoundDef>
+    <defName>WF_HallowedGround_Sustainer</defName>
+    <sustain>true</sustain>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>  
+    <priorityMode>PrioritizeNearest</priorityMode>  
+    <subSounds>
+      <li>
+        <muteWhenPaused>True</muteWhenPaused>      
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Milkwater_Oberon_HallowedGround_Loop</clipPath>
+          </li>
+        </grains>      
+        <pitchRange>0.99~1.01</pitchRange>
+        <volumeRange>25~25</volumeRange>
+        <sustainAttack>2.5</sustainAttack>      
+        <sustainRelease>2.5</sustainRelease>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
 </Defs>
