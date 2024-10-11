@@ -122,14 +122,17 @@ namespace WarframePsycasts
             // wonder what this does
             base.Tick();
 
-            // Make a position for the comets to spawn
-            IntVec3 cometOrigin = new IntVec3(0, 0, base.pawn.Map.Size.z - 1);
+            // prevent edge case error where pawn is loaded into a vehicle
+            if(base.pawn == null) return;
 
             // if we are currently ticking AND we passed the time needed to attack again
             if (tickCounter != 0 && Find.TickManager.TicksGame >= tickCounter && cometsLaunched < 5)
             {
                 // stop ticking
                 tickCounter = 0;
+
+                // Make a position for the comets to spawn
+                IntVec3 cometOrigin = new IntVec3(0, 0, base.pawn.Map.Size.z - 1);
 
                 // Create our projectile and launch it
                 Projectile projectile = (Projectile)GenSpawn.Spawn(ThingDef.Named("Milkwater_Projectile_Comet"), cometOrigin, base.pawn.Map);

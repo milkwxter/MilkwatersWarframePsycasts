@@ -103,7 +103,7 @@ namespace WarframePsycasts
 
             // cool effects
             FleckMaker.Static(base.pawn.Position, base.pawn.Map, FleckDefOf.PsycastAreaEffect);
-            FleckMaker.Static(base.pawn.Position, base.pawn.Map, DefDatabase<FleckDef>.GetNamed("WF_Slash_Fleck"));
+            FleckMaker.Static(base.pawn.Position, base.pawn.Map, DefDatabase<FleckDef>.GetNamed("WF_SlashBig_Fleck"));
             DefDatabase<SoundDef>.GetNamed("WF_SlashDash_Sound").PlayOneShot(new TargetInfo(target.Cell, target.Pawn.Map, false));
         }
 

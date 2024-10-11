@@ -56,27 +56,11 @@
 		<stages>
 		  <li>
 			<statOffsets>
-			  <MoveSpeed>-5.0</MoveSpeed>
 			  <MeleeCooldownFactor>2.0</MeleeCooldownFactor>
 			  <RangedCooldownFactor>2.0</RangedCooldownFactor>
 			</statOffsets>
 		  </li>
         </stages>
-</HediffDef>
-
-<HediffDef ParentName="RoleStatBuff">
-		<defName>WF_Generic_Radiation</defName>
-		<label>radiation proc</label>
-		<description>Because of a psychic ability, this pawn's confusion will lead them to attack pawns of the same faction.</description>
-		<hediffClass>WarframePsycasts.Hediff_Radiation</hediffClass>
-		<defaultLabelColor>(1, 1, 0)</defaultLabelColor>
-		<isBad>True</isBad>
-		<comps>
-		  <li Class="HediffCompProperties_Disappears">
-			<showRemainingTime>True</showRemainingTime>
-			<disappearsAfterTicks>1200</disappearsAfterTicks>
-		  </li>
-		</comps>
 </HediffDef>
 
 <HediffDef ParentName="RoleStatBuff">

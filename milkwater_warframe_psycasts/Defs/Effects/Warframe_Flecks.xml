@@ -24,7 +24,7 @@
   </FleckDef>
   
   <FleckDef ParentName="FleckBase">
-    <defName>WF_Slash_Fleck</defName>
+    <defName>WF_SlashBig_Fleck</defName>
     <altitudeLayer>MoteOverhead</altitudeLayer>
     <solidTime>0.30</solidTime>
     <fadeOutTime>0.10</fadeOutTime>
@@ -154,17 +154,6 @@
     <fadeOutTime>0.30</fadeOutTime>
     <graphicData>
       <texPath>Things/Effects/WF_Electric_Fleck</texPath>
-      <shaderType>MoteGlow</shaderType>
-    </graphicData>
-  </FleckDef>
-  
-  <FleckDef ParentName="FleckBase">
-    <defName>WF_Radiation_Fleck</defName>
-    <altitudeLayer>MoteOverhead</altitudeLayer>
-    <solidTime>0.30</solidTime>
-    <fadeOutTime>0.30</fadeOutTime>
-    <graphicData>
-      <texPath>Things/Effects/WF_Radiation_Fleck</texPath>
       <shaderType>MoteGlow</shaderType>
     </graphicData>
   </FleckDef>
