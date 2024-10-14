@@ -84,7 +84,15 @@ namespace WarframePsycasts
             if (target != null)
                 tickCounter = Find.TickManager.TicksGame + 20;
             else
+            {
                 tickCounter = 0;
+
+                // remove the dodge bonus
+                HediffDef hediffDef = DefDatabase<HediffDef>.GetNamed("WF_Generic_Dodge");
+                Hediff hediff2 = base.pawn.health.hediffSet.GetFirstHediffOfDef(hediffDef);
+                if (hediff2 != null)
+                    base.pawn.health.RemoveHediff(hediff2);
+            }
         }
 
         public void AttackTarget(LocalTargetInfo target)
@@ -103,7 +111,7 @@ namespace WarframePsycasts
 
             // cool effects
             FleckMaker.Static(base.pawn.Position, base.pawn.Map, FleckDefOf.PsycastAreaEffect);
-            FleckMaker.Static(base.pawn.Position, base.pawn.Map, DefDatabase<FleckDef>.GetNamed("WF_Slash_Fleck"));
+            FleckMaker.Static(base.pawn.Position, base.pawn.Map, DefDatabase<FleckDef>.GetNamed("WF_SlashBig_Fleck"));
             DefDatabase<SoundDef>.GetNamed("WF_SlashDash_Sound").PlayOneShot(new TargetInfo(target.Cell, target.Pawn.Map, false));
         }
 

@@ -1,16 +1,10 @@
 ﻿using RimWorld;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Verse.AI.Group;
 using Verse;
 using Verse.Sound;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
-using Verse.AI;
-using Verse.Noise;
 
 namespace WarframePsycasts
 {
