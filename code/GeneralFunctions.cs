@@ -1,10 +1,14 @@
 ﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Verse.AI.Group;
 using Verse;
 using Verse.Sound;
 using UnityEngine;
+using Verse.AI;
 
 namespace WarframePsycasts
 {
@@ -14,7 +18,7 @@ namespace WarframePsycasts
         {
             // cool effect
             FleckMaker.Static(corpse.Position, corpse.Map, FleckDefOf.PsycastAreaEffect);
-            
+
             // bye bye corpse
             corpse.Destroy();
         }
@@ -87,16 +91,16 @@ namespace WarframePsycasts
     }
 
     [DefOf]
-    public static class WF_ThingDefOf 
+    public static class WF_ThingDefOf
     {
         static WF_ThingDefOf()
         {
             DefOfHelper.EnsureInitializedInCtor(typeof(WF_ThingDefOf));
         }
 
-        public static ThingDef BloodAltar;
-	}
-	
+        public static ThingDef Building_BloodAltar;
+    }
+
     public class Hediff_Radiation : HediffWithComps
     {
         public override void Tick()

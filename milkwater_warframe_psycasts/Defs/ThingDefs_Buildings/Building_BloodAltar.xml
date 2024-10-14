@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="BuildingBase">
+	<defName>Building_BloodAltar</defName>
+	<thingClass>WarframePsycasts.Building_BloodAltar</thingClass>
+	<label>blood altar</label>
+	<description>An altar of talons that siphons health for the caster and their allies</description>
+	<graphicData>
+      <texPath>UI/Garuda/blood_altar</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.2</drawSize>
+    </graphicData>
+	<altitudeLayer>Building</altitudeLayer>
+	<passability>Standable</passability>
+	<castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.35</staticSunShadowHeight>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>true</canOverlapZones>
+    <pathCost>60</pathCost>
+	<tickerType>Normal</tickerType>
+    <statBases>
+        <MaxHitPoints>150</MaxHitPoints>
+        <Mass>40</Mass>
+        <Flammability>1.0</Flammability>
+    </statBases>
+    <size>(1,1)</size>
+	
+	</ThingDef>
+	
+	
+</Defs>
+	

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
 
-<VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
     <defName>Milkwater_Garuda_DreadMirror</defName>
     <label>dread mirror</label>
     <description>Leap to a target, and rip their life force away. If this kills them, it turns their blood into a shield.\nActivate this ability while the shield is up to turn it into an explosive projectile.</description>
     <iconPath>UI/Garuda/dread_mirror</iconPath>
-    <abilityClass>WarframePsycasts.Ability_IronSkin</abilityClass>
+    <abilityClass>WarframePsycasts.Ability_DreadMirror</abilityClass>
     <castTime>60</castTime>
 	<cooldownTime>180</cooldownTime>
     <range>15</range>
@@ -25,7 +25,7 @@
         <path>VPE_WF_Garuda</path>
         <level>1</level>
         <order>1</order>
-        <psyfocusCost>0.03</psyfocusCost>
+        <psyfocusCost>0.1</psyfocusCost>
         <entropyGain>10</entropyGain>
       </li>
     </modExtensions>
@@ -34,12 +34,12 @@
   <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
     <defName>Milkwater_Garuda_BloodAltar</defName>
     <label>blood altar</label>
-    <description>Impale an enemy on an altar of talons.\nIf this kills them, produce a healing aura for allies.</description>
+    <description>Impale an enemy on an altar of talons.\nThey are drained for the health of the caster and their allies.  \nThe enemy will return when their time as a blood source is complete.</description>
     <iconPath>UI/Garuda/blood_altar</iconPath>
     <abilityClass>WarframePsycasts.Ability_BloodAltar</abilityClass>
     <castTime>60</castTime>
 	<cooldownTime>180</cooldownTime>
-    <range>15</range>
+    <range>5</range>
     <targetMode>Pawn</targetMode>
 	<targetingParameters>
 		<canTargetLocations>False</canTargetLocations>
@@ -55,7 +55,7 @@
         <path>VPE_WF_Garuda</path>
         <level>2</level>
         <order>1</order>
-        <psyfocusCost>0.03</psyfocusCost>
+        <psyfocusCost>0.2</psyfocusCost>
         <entropyGain>10</entropyGain>
 		<prerequisites>
 			<li>Milkwater_Garuda_DreadMirror</li>
@@ -69,7 +69,7 @@
     <label>bloodletting</label>
     <description>Slash yourself using your talons, gaining extra psyfocus % and cleansing yourself of negative status effects.</description>
     <iconPath>UI/Garuda/bloodletting</iconPath>
-    <abilityClass>WarframePsycasts.Ability_IronSkin</abilityClass>
+    <abilityClass>WarframePsycasts.Ability_Bloodletting</abilityClass>
     <castTime>60</castTime>
 	<cooldownTime>180</cooldownTime>
     <range>0</range>
@@ -93,7 +93,7 @@
     <label>seeking talons</label>
     <description>Send Garuda’s talons careening toward each target in the surrounding area. Surviving enemies are prone to bleeding.</description>
     <iconPath>UI/Garuda/seeking_talons</iconPath>
-    <abilityClass>WarframePsycasts.Ability_IronSkin</abilityClass>
+    <abilityClass>WarframePsycasts.Ability_SeekingTalons</abilityClass>
     <castTime>60</castTime>
 	<cooldownTime>180</cooldownTime>
     <range>0</range>
@@ -104,8 +104,8 @@
         <path>VPE_WF_Garuda</path>
         <level>4</level>
         <order>1</order>
-        <psyfocusCost>0.10</psyfocusCost>
-        <entropyGain>100</entropyGain>
+        <psyfocusCost>0.40</psyfocusCost>
+        <entropyGain>60</entropyGain>
 		<prerequisites>
 			<li>Milkwater_Garuda_Bloodletting</li>
 		</prerequisites>

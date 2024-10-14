@@ -66,6 +66,7 @@
         </stages>
 </HediffDef>
 
+
 <HediffDef ParentName="RoleStatBuff">
 	<defName>WF_Garuda_BloodAltarSpiked</defName>
 	<label>spiked</label>
@@ -87,6 +88,41 @@
             </capMods>
         </li>
 	</stages>
+</HediffDef>
+
+<HediffDef>
+	<defName>WF_Garuda_DreadMirror</defName>
+	<label>soul-charged overshield</label>
+	<description>Dread Mirror description</description>
+	<hediffClass>VanillaPsycastsExpanded.Hediff_Overshield</hediffClass>
+	<comps>
+		  <li Class="HediffCompProperties_Disappears">
+			<showRemainingTime>True</showRemainingTime>
+			<disappearsAfterTicks>3000</disappearsAfterTicks>
+		  </li>
+	</comps>
+</HediffDef>
+
+<HediffDef ParentName="RoleStatBuff">
+		<defName>WF_Garuda_BloodAltarHealing</defName>
+		<label>blood altar healing</label>
+		<description>the pawn is sustained by the blood of the spiked humanlike.</description>
+		<hediffClass>WarframePsycasts.Hediff_Healing</hediffClass>
+		<defaultLabelColor>(0, 1, 0)</defaultLabelColor>
+		<isBad>False</isBad>
+		<comps>
+		  <li Class="HediffCompProperties_Disappears">
+			<showRemainingTime>False</showRemainingTime>
+			<disappearsAfterTicks>1000</disappearsAfterTicks>
+		  </li>
+		</comps>
+		<stages>
+		  <li>
+			<statOffsets>
+			  <InjuryHealingFactor>5.0</InjuryHealingFactor>
+			</statOffsets>
+		  </li>
+        </stages>
 </HediffDef>
 
 </Defs>

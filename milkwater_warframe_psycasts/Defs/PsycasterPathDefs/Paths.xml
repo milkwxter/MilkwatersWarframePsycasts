@@ -61,4 +61,14 @@
     <tooltip>Vauban is the model of innovative technology. He deploys clever inventions to provide crowd control. His tenacity and focus make him formidable.</tooltip>
   </VanillaPsycastsExpanded.PsycasterPathDef>
   
+  <VanillaPsycastsExpanded.PsycasterPathDef MayRequire="VanillaExpanded.VPsycastsE">
+    <defName>VPE_WF_Garuda</defName>
+    <label>garuda</label>
+    <description>Death's crimson maiden sharpens her talons. Garuda weaponizes the blood of her foes to deal high damage. Sanguine beauty complements her deadly power.</description>
+    <background>UI/PsycastPaths/PathBG_Garuda</background>
+    <altBackground>UI/PsycastPaths/PathBG_Garuda</altBackground>
+    <tab>Warframes</tab>
+    <tooltip>Death's crimson maiden sharpens her talons. Garuda weaponizes the blood of her foes to deal high damage. Sanguine beauty complements her deadly power.</tooltip>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+  
 </Defs>

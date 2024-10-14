@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using RimWorld;
 using Verse;
 using VFECore.Abilities;
+using Verse.Noise;
+using Verse.Sound;
 
 namespace WarframePsycasts
 {
@@ -24,15 +26,17 @@ namespace WarframePsycasts
          *  
         */
 
-        internal bool shieldIsOn = false;
+        //internal bool shieldIsOn = false;
+        internal bool ShieldIsOn { get
+            {
+                return pawn.health.hediffSet.HasHediff(HediffDef.Named("WF_Garuda_DreadMirror"));
+            } }
         internal const float maxDuration = 100f;
         internal float currentDuration = 0f;
         public override void Cast(params GlobalTargetInfo[] targets)
         {
             base.Cast(targets);
-            //Check for shield hediff
-            shieldIsOn = pawn.health.hediffSet.HasHediff(HediffDef.Named("WF_Garuda_DreadMirrorShield"));
-            if (!shieldIsOn)
+            if (!ShieldIsOn)
             {
                 //Skip to target
                 //Borrowing from VPE Killskip, "AttackTarget"
@@ -45,51 +49,37 @@ namespace WarframePsycasts
                 targets[0].Pawn.TakeDamage(ripDamageInfo);
 
                 //Give caster a shield
-                //Maybe Hediff_Overshield from VPE - Protector Tree - Overshield
-
+                pawn.health.GetOrAddHediff(HediffDef.Named("WF_Garuda_DreadMirror"));
+                //currentDuration = maxDuration;
+                //Note: Right now there's nothing to make the shield ever go away.
             }
 
             else
             {
                 //Cancel shield
+                Hediff shieldHediff = pawn.health.GetOrAddHediff(HediffDef.Named("WF_Garuda_DreadMirror"));
+                pawn.health.RemoveHediff(shieldHediff);
 
                 //Launch projectile
-            }
-        }
+                Projectile projectile = (Projectile)GenSpawn.Spawn(ThingDef.Named("Milkwater_Projectile_DreadMirror"), pawn.Position, pawn.Map);
+                FleckMaker.Static(pawn.Position, pawn.Map, DefDatabase<FleckDef>.GetNamed("WF_Target_Fleck"));
+                projectile.Launch(pawn, pawn.DrawPos, targets[0].Pawn, targets[0].Pawn, ProjectileHitFlags.IntendedTarget);
+                //DamageInfo pdi = new DamageInfo(DamageDefOf.Psychic, 25f, 1f, -1f, pawn);
+                
 
-        public override void Tick()
-        {
-            base.Tick();
-
-            if(shieldIsOn)
-            {
-                if(--currentDuration <= 0)
-                {
-
-                }
             }
         }
     }
-
+    #region BloodAltar
     public class Ability_BloodAltar : VFECore.Abilities.Ability
     {
         /*
          * Spikes an enemy and creates a healing alter at their location.  
-         * See:
-         *  Ability_GroupLink
-         *      Hediff_GroupLink
-         *          LinkAllPawnsAround()
+         * See:Ability_GroupLink->Hediff_GroupLink->LinkAllPawnsAround()
          * */
-        //public override Hediff ApplyHediff(Pawn targetPawn, HediffDef hediffDef, BodyPartRecord bodyPart, int duration, float severity)
-        //{
-        //    //Hediff_GroupLink hediff_GroupLink = base.ApplyHediff(targetPawn, hediffDef, bodyPart, duration, severity) as Hediff_GroupLink;
-        //    //hediff_GroupLink.LinkAllPawnsAround();
-        //    //return hediff_GroupLink;
-        //}
 
         public Building_BloodAltar altar = null;
         public const float strikeRadius = 7f;
-
 
         public override void Cast(params GlobalTargetInfo[] targets)
         {
@@ -97,9 +87,9 @@ namespace WarframePsycasts
 
             //Check if there's already a blood altar present
             //List<Building_BloodAltar> BAList = pawn.Map.listerBuildings.AllBuildingsColonistOfClass<Building_BloodAltar>().ToList();
-            //if(BAList.Count > 0)
+            //if (BAList.Count > 0)
             //{
-            //    for(int i = 0; i < BAList.Count; i++)
+            //    for (int i = 0; i < BAList.Count; i++)
             //    {
             //        if (BAList[i].owner == pawn)
             //        {
@@ -108,6 +98,7 @@ namespace WarframePsycasts
             //    }
             //}
             //I don't like this.  Let's see if we can grey out the gizmo instead.  
+            //Second guessing: WF's Garuda can have up to 3.  
 
             pawn.Position = targets[0].Cell;
             pawn.Notify_Teleported(false, true);
@@ -118,11 +109,13 @@ namespace WarframePsycasts
 
             //Spawn Building_BloodAltar
             //Building should be fully walkable, to prevent it from moving the host pawn out of the way.  
-            //Ability_SpawnBuilding -- I want to look into this
-            Thing thingAltar = GenSpawn.Spawn(WF_ThingDefOf.BloodAltar, targets[0].Cell, targets[0].Map, WipeMode.Vanish);
+            Thing thingAltar = GenSpawn.Spawn(WF_ThingDefOf.Building_BloodAltar, targets[0].Cell, targets[0].Map, WipeMode.Vanish);
             Building_BloodAltar altar = (Building_BloodAltar) thingAltar;
             altar.owner = pawn;
             altar.sourceAbility = this;
+            altar.remainingDuration = Building_BloodAltar.maxDuration;
+
+            altar.ShowRadius();
         }
 
 
@@ -135,9 +128,12 @@ namespace WarframePsycasts
         public VFECore.Abilities.Ability sourceAbility;
         public List<Pawn> linkedPawns = new List<Pawn>();
         public const float effectRadius = 5f;
-        public void GetSurroundingPawns()
+        public const int maxDuration = 3000;
+        public int remainingDuration = 0;
+        public bool GetSurroundingPawns()
         {
             //Borrowing from: Hediff_GroupLink.LinkAllPawnsAround()
+            bool changeFlag = false;
             foreach (Pawn item in from x in GenRadial.RadialDistinctThingsAround(this.Position, this.Map, effectRadius, true).OfType<Pawn>()
                                   where x.RaceProps.Humanlike && !x.Faction.HostileTo(Faction.OfPlayer)
                                   select x)
@@ -146,38 +142,70 @@ namespace WarframePsycasts
                 if (flag)
                 {
                     this.linkedPawns.Add(item);
+                    changeFlag = true;
                 }
             }
+            return changeFlag;
         }
-
+        public void SpreadHediffToAll()
+        {
+            foreach (Pawn p in linkedPawns)
+            {
+                p.health.GetOrAddHediff(HediffDef.Named("WF_Garuda_BloodAltarHealing"));
+            }
+        }
         public override void Tick()
         {
             base.Tick();
+            //Log.Message("BATick, " + remainingDuration.ToString());
+            if(--remainingDuration <= 0)
+            {
+                linkedPawns.Clear();
+                this.Destroy();
+                return;
+            }
+            bool changedFlag = false;
             for(int i = 0; i < linkedPawns.Count; i++)
             {
                 Pawn p = linkedPawns[i];
-                bool flag = p.Map != this.Map ||
+                bool removeFlag = p.Map != this.Map ||
                     p.Position.DistanceTo(this.Position) > effectRadius;
-                if (flag)
+                if (removeFlag)
                 {
                     linkedPawns.RemoveAt(i);
                     i--;
+                    changedFlag = true;
                 }
-
-//TODO: Need WF_Garuda_BloodAltarHealing based on VPE_DefOf.VPE_GainedVitality
-                HediffDef hediffDef = HediffDef.Named("WF_Garuda_BloodAltarHealing");
-                p.health.GetOrAddHediff(hediffDef);
             }
+            if (GetSurroundingPawns())
+            {
+                changedFlag = true;
+            }
+            if (changedFlag)
+            {
+                SpreadHediffToAll();
+            }            
+        }
 
-            
+        public void ShowRadius()
+        {
+            FleckMaker.Static(this.Position, this.Map, FleckDefOf.PsycastAreaEffect);
+            Mote obj = (Mote)ThingMaker.MakeThing(ThingDef.Named("Mote_BloodAltarRadius"));
+            obj.exactPosition = owner.Position.ToVector3Shifted();
+            obj.Scale = 7f;
+            GenSpawn.Spawn(obj, this.Position, this.Map);
+            //FleckMaker.Static(owner.Position, owner.Map, DefDatabase<FleckDef>.GetNamed("WF_BloodAltarRadius_Fleck"));
         }
     }
+    #endregion
 
+    /*
+     * Testing successful.  
+     */
     public class Ability_Bloodletting : VFECore.Abilities.Ability
     {
         /*
-         * Pawn sacrifices health for psyfocus.  Sounds simple enough; doubt it actually will be.  
-         * Per convo: "For bloodletting I was thinking the pawn would slash himself for like 10 damage, and gain x% psyfocus and removes bad hediffs"
+         * Pawn sacrifices health for psyfocus and status (bad, non-injury hediffs) clearing
          * */
         public const float selfDamage = 10f;
 
@@ -185,22 +213,85 @@ namespace WarframePsycasts
         {
             base.Cast(targets);
 
+            //Sacrifice health.  Shouldn't be lethal.
+            //NOTE: One way to balance could be through blood loss not being healed.  
             DamageInfo selfDamageInfo = new DamageInfo(DamageDefOf.Cut, selfDamage, 1f, -1f, pawn);
+            selfDamageInfo.SetBodyRegion(BodyPartHeight.Bottom);
+            pawn.TakeDamage(selfDamageInfo);
 
-            targets[0].Pawn.TakeDamage(selfDamageInfo);
+            //Gain psyfocus
+            pawn.psychicEntropy.OffsetPsyfocusDirectly(.2f);
 
-            //Two possible mods that could contain hints on methods for regaining psyfocus: Hemosage and Anima Obelisk
 
+            //Remove bad hediffs
+            HediffSet set = pawn.health.hediffSet;
+            List<Hediff> hList = new List<Hediff>();
+            set.GetHediffs<Hediff>(ref hList);
+            List<Hediff> removeList = hList.Where(h => h.def.isBad).ToList();
+            //Pare down list
+            removeList = removeList.Where(h => h.GetType() != typeof(Hediff_Injury)).ToList();
+            //Actual removal
+            for(int i = removeList.Count-1; i >= 0; i--)
+            {
+                pawn.health.RemoveHediff(removeList[i]);
+            }
         }
 
     }
 
     public class Ability_SeekingTalons : VFECore.Abilities.Ability
     {
+        public float range = 7f;
+        public float talonDamage = 20f;
+
         /*
          * Radial slash.  Strong, but expensive.
-         * Probably won't be all that different from Radial Javelin, except all pawns in range, and range is centered on Garuda
          * Maybe a semi-long chargeup, too
          * */
+        public override void Cast(params GlobalTargetInfo[] targets) 
+        { 
+            base.Cast(targets);
+
+            //Borrowing from Oberon's Reckoning
+            foreach (IntVec3 cell in GenRadial.RadialCellsAround(targets[0].Cell, range, true))
+            {
+                if (!cell.InBounds(targets[0].Map)) continue;
+
+                FleckMaker.Static(base.pawn.Position, base.pawn.Map, FleckDefOf.PsycastAreaEffect);
+                Mote obj = (Mote)ThingMaker.MakeThing(ThingDef.Named("Mote_SeekingTalons"));
+                obj.exactPosition = pawn.Position.ToVector3Shifted();
+                obj.Scale = 7f;
+                GenSpawn.Spawn(obj, pawn.Position, pawn.Map);
+
+
+                Thing[] array = cell.GetThingList(base.pawn.Map).ToArray();
+                foreach (Thing thing in array)
+                {
+                    // make sure we do stuff to only pawns
+                    if (thing.GetType() != typeof(Pawn)) continue;
+                    Pawn pawn = thing as Pawn;
+
+                    // Check the faction of the pawn
+                    if (pawn.Faction != null && pawn.Faction.HostileTo(base.pawn.Faction))
+                    {
+                        // Deal some damage
+                        DamageInfo clawsDamageInfo = new DamageInfo(DamageDefOf.Cut, talonDamage, 1f, -1f, base.pawn);
+                        pawn.TakeDamage(clawsDamageInfo);
+                        if (pawn.DeadOrDowned) continue;
+
+                        // do some effects
+                        FleckMaker.Static(pawn.Position, base.pawn.Map, DefDatabase<FleckDef>.GetNamed("WF_GarudaSlash_Fleck"));
+
+                        // Make him jump
+                        PawnFlyer pawnFlyer = PawnFlyer.MakeFlyer(ThingDefOf.PawnFlyer, pawn, pawn.Position, null, DefDatabase<SoundDef>.GetNamed("WF_RhinoStomp_Sound"), false, null, null, pawn);
+                        if (pawnFlyer != null)
+                        {
+                            FleckMaker.ThrowDustPuff(pawn.Position.ToVector3Shifted() + Gen.RandomHorizontalVector(0.5f), base.pawn.Map, 2f);
+                            GenSpawn.Spawn(pawnFlyer, pawn.Position, base.pawn.Map);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
