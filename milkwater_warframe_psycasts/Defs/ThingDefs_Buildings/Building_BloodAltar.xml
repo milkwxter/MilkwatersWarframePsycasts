@@ -5,11 +5,11 @@
 	<defName>Building_BloodAltar</defName>
 	<thingClass>WarframePsycasts.Building_BloodAltar</thingClass>
 	<label>blood altar</label>
-	<description>An altar of talons that siphons health for the caster and their allies</description>
+	<description>An altar of talons that siphons health for the caster and their allies.</description>
 	<graphicData>
-      <texPath>UI/Garuda/blood_altar</texPath>
+      <texPath>Things/Building/bloodaltar_building</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>1.2</drawSize>
+      <drawSize>2</drawSize>
     </graphicData>
 	<altitudeLayer>Building</altitudeLayer>
 	<passability>Standable</passability>
@@ -25,7 +25,6 @@
         <Flammability>1.0</Flammability>
     </statBases>
     <size>(1,1)</size>
-	
 	</ThingDef>
 	
 	

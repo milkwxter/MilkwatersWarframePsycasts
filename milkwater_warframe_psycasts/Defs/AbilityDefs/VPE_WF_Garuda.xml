@@ -31,6 +31,22 @@
     </modExtensions>
   </VFECore.Abilities.AbilityDef>
   
+  <ThingDef ParentName="BaseProjectileNeolithic">
+    <defName>Milkwater_Projectile_DreadMirror</defName>
+    <label>blood orb</label>
+    <graphicData>
+      <texPath>Things/Projectile/Milkwater_Projectile_Blood_Orb</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Burn</damageDef>
+      <damageAmountBase>20</damageAmountBase>
+      <stoppingPower>1</stoppingPower>
+      <armorPenetrationBase>0.5</armorPenetrationBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+  
   <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
     <defName>Milkwater_Garuda_BloodAltar</defName>
     <label>blood altar</label>
@@ -39,7 +55,7 @@
     <abilityClass>WarframePsycasts.Ability_BloodAltar</abilityClass>
     <castTime>60</castTime>
 	<cooldownTime>180</cooldownTime>
-    <range>5</range>
+    <range>10</range>
     <targetMode>Pawn</targetMode>
 	<targetingParameters>
 		<canTargetLocations>False</canTargetLocations>

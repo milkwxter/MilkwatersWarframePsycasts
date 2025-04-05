@@ -120,6 +120,12 @@ namespace WarframePsycasts
                 List<Hediff_Injury> pawnsInjuries = base.pawn.health.hediffSet.hediffs.OfType<Hediff_Injury>().ToList();
                 foreach (var injury in pawnsInjuries)
                 {
+                    // skip unnatural injuries like scarification and normal scars
+                    if (injury.CanHealNaturally() == false)
+                    {
+                        continue;
+                    }
+
                     // give 1 more health to each injury
                     injury.Heal(1f);
                 }

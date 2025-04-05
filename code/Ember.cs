@@ -93,7 +93,7 @@ namespace WarframePsycasts
                     if (pawn.Faction != null && !pawn.Faction.HostileTo(caster.Faction)) continue;
 
                     // give hediff
-                    pawn.health.AddHediff(HediffDef.Named("WF_Generic_ArmorStrip"));
+                    pawn.health.AddHediff(HediffDef.Named("WFP_Generic_ArmorStrip"));
 
                     // deal two instances of damage
                     pawn.TakeDamage(burnt);

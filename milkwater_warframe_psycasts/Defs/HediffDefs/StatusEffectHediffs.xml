@@ -2,8 +2,8 @@
 <Defs>
 
 <!-- 3 generic status effects -->
-<HediffDef ParentName="RoleStatBuff">
-		<defName>WF_Generic_Impact</defName>
+<HediffDef>
+		<defName>WFP_Generic_Impact</defName>
 		<label>impact proc</label>
 		<description>This pawn has suffered a great hit, and will get thrown into the air and stunned.</description>
 		<hediffClass>WarframePsycasts.Hediff_Impact</hediffClass>
@@ -27,8 +27,8 @@
 	</stages>
 </HediffDef>
 
-<HediffDef ParentName="RoleStatBuff">
-		<defName>WF_Generic_Puncture</defName>
+<HediffDef>
+		<defName>WFP_Generic_Puncture</defName>
 		<label>puncture proc</label>
 		<description>This pawn's body has been punctured, it's melee speed and damage output are slowed.</description>
 		<hediffClass>WarframePsycasts.Hediff_Puncture</hediffClass>
@@ -50,8 +50,8 @@
         </stages>
 </HediffDef>
 
-<HediffDef ParentName="RoleStatBuff">
-		<defName>WF_Generic_Slash</defName>
+<HediffDef>
+		<defName>WFP_Generic_Slash</defName>
 		<label>slash proc</label>
 		<description>This pawn has suffered a great slash, losing blood and stripping it of its armor.</description>
 		<hediffClass>WarframePsycasts.Hediff_Slash</hediffClass>
@@ -76,8 +76,8 @@
 <!-- 4 elemental status effects -->
 
 <!-- 6 combination status effects -->
-<HediffDef ParentName="RoleStatBuff">
-		<defName>WF_Generic_Radiation</defName>
+<HediffDef>
+		<defName>WFP_Generic_Radiation</defName>
 		<label>radiation proc</label>
 		<description>This pawn's confusion will lead them to attack pawns of the same faction.</description>
 		<hediffClass>WarframePsycasts.Hediff_Radiation</hediffClass>

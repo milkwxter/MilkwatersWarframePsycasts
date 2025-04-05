@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-<HediffDef ParentName="RoleStatBuff">
-		<defName>WF_Generic_Dodge</defName>
+<HediffDef>
+		<defName>WFP_Generic_Dodge</defName>
 		<label>incredible evasion</label>
 		<description>Because of a psychic ability, this pawn has an incredibly enhanced dodge chance.</description>
 		<hediffClass>Hediff</hediffClass>
@@ -16,8 +16,8 @@
         </stages>
 </HediffDef>
 
-<HediffDef ParentName="RoleStatBuff">
-		<defName>WF_Generic_ArmorStrip</defName>
+<HediffDef>
+		<defName>WFP_Generic_ArmorStrip</defName>
 		<label>armor stripped</label>
 		<description>Because of a psychic ability, this pawn's armor has been stripped.</description>
 		<hediffClass>HediffWithComps</hediffClass>
@@ -40,8 +40,8 @@
         </stages>
 </HediffDef>
 
-<HediffDef ParentName="RoleStatBuff">
-		<defName>WF_Generic_Stasis</defName>
+<HediffDef>
+		<defName>WFP_Generic_Stasis</defName>
 		<label>psychic stasis</label>
 		<description>Because of a psychic ability, this pawn is unable to move or attack properly.</description>
 		<hediffClass>HediffWithComps</hediffClass>
@@ -64,23 +64,8 @@
         </stages>
 </HediffDef>
 
-<HediffDef ParentName="RoleStatBuff">
-		<defName>WF_Generic_Radiation</defName>
-		<label>radiation proc</label>
-		<description>Because of a psychic ability, this pawn's confusion will lead them to attack pawns of the same faction.</description>
-		<hediffClass>WarframePsycasts.Hediff_Radiation</hediffClass>
-		<defaultLabelColor>(1, 1, 0)</defaultLabelColor>
-		<isBad>True</isBad>
-		<comps>
-		  <li Class="HediffCompProperties_Disappears">
-			<showRemainingTime>True</showRemainingTime>
-			<disappearsAfterTicks>1200</disappearsAfterTicks>
-		  </li>
-		</comps>
-</HediffDef>
-
-<HediffDef ParentName="RoleStatBuff">
-		<defName>WF_Generic_Healing</defName>
+<HediffDef>
+		<defName>WFP_Generic_Healing</defName>
 		<label>psychic healing</label>
 		<description>Because of a psychic ability, this pawn's healing is greatly accelerated.\nWounds have a chance to tend themselves.</description>
 		<hediffClass>WarframePsycasts.Hediff_Healing</hediffClass>

@@ -47,9 +47,9 @@
   </ThingDef>
   
   <ThingDef ParentName="MoteBase">
-	<defName>Mote_SeekingTalons</defName>
+	<defName>Mote_SeekingTalonsRadius</defName>
 	<graphicData>
-		<texPath>Things/Projectile/Milkwater_Projectile_Garuda_Talon</texPath>
+		<texPath>Other/SeekingTalonsOverlay</texPath>
 		<shaderType>MoteGlow</shaderType>
 	</graphicData>
 	<altitudeLayer>Item</altitudeLayer>
@@ -64,7 +64,7 @@
   <ThingDef ParentName="MoteBase">
 	<defName>Mote_BloodAltarRadius</defName>
 	<graphicData>
-		<texPath>Things/Effects/WF_BloodAltar_Fleck</texPath>
+		<texPath>Other/BloodAltarOverlay</texPath>
 		<shaderType>MoteGlow</shaderType>
 	</graphicData>
 	<altitudeLayer>Item</altitudeLayer>

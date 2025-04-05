@@ -47,7 +47,7 @@ namespace WarframePsycasts
                     tickCounter = 0;
 
                     // remove the dodge bonus
-                    HediffDef hediffDef = DefDatabase<HediffDef>.GetNamed("WF_Generic_Dodge");
+                    HediffDef hediffDef = DefDatabase<HediffDef>.GetNamed("WFP_Generic_Dodge");
                     Hediff hediff = base.pawn.health.hediffSet.GetFirstHediffOfDef(hediffDef);
                     if (hediff != null)
                         base.pawn.health.RemoveHediff(hediff);
@@ -65,7 +65,7 @@ namespace WarframePsycasts
             Pawn target = targets[0].Pawn;
 
             // create and add a hediff
-            HediffDef hediff = HediffDef.Named("WF_Generic_Dodge");
+            HediffDef hediff = HediffDef.Named("WFP_Generic_Dodge");
             base.pawn.health.AddHediff(hediff);
 
             // clear the list so we can get new pawns to attack
@@ -88,7 +88,7 @@ namespace WarframePsycasts
                 tickCounter = 0;
 
                 // remove the dodge bonus
-                HediffDef hediffDef = DefDatabase<HediffDef>.GetNamed("WF_Generic_Dodge");
+                HediffDef hediffDef = DefDatabase<HediffDef>.GetNamed("WFP_Generic_Dodge");
                 Hediff hediff2 = base.pawn.health.hediffSet.GetFirstHediffOfDef(hediffDef);
                 if (hediff2 != null)
                     base.pawn.health.RemoveHediff(hediff2);

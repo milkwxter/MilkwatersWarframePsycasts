@@ -216,15 +216,4 @@
     </graphicData>
   </FleckDef>
   
-  <FleckDef ParentName="FleckBase">
-    <defName>WF_BloodAltarRadius_Fleck</defName>
-    <altitudeLayer>MoteOverhead</altitudeLayer>
-    <solidTime>0.70</solidTime>
-    <fadeOutTime>0.30</fadeOutTime>
-    <graphicData>
-      <texPath>Things/Effects/WF_BloodAltar_Fleck</texPath>
-      <shaderType>MoteGlow</shaderType>
-    </graphicData>
-  </FleckDef>
-  
 </Defs>

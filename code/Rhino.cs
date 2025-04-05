@@ -125,7 +125,7 @@ namespace WarframePsycasts
             Pawn target = targets[0].Pawn;
 
             // create the hediff
-            HediffDef hediff = HediffDef.Named("WF_Rhino_IronSkin");
+            HediffDef hediff = HediffDef.Named("WFP_Rhino_IronSkin");
 
             // add the hediff
             target.health.AddHediff(hediff);
@@ -147,7 +147,7 @@ namespace WarframePsycasts
             base.Cast(targets);
 
             // create the hediff
-            HediffDef hediff = HediffDef.Named("WF_Rhino_Roar");
+            HediffDef hediff = HediffDef.Named("WFP_Rhino_Roar");
 
             // get the pawns
             Pawn caster = base.pawn;

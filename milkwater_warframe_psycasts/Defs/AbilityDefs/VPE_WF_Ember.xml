@@ -71,7 +71,7 @@
 		</prerequisites>
       </li>
 	  <li Class="VFECore.Abilities.AbilityExtension_Hediff">
-        <hediff>WF_Ember_Immolation</hediff>
+        <hediff>WFP_Ember_Immolation</hediff>
         <durationMultiplier>PsychicSensitivity</durationMultiplier>
       </li>
     </modExtensions>

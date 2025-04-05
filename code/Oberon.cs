@@ -18,7 +18,7 @@ namespace WarframePsycasts
 
             // create variables
             Pawn caster = base.pawn;
-            HediffDef hediff = HediffDef.Named("WF_Generic_Radiation");
+            HediffDef hediff = HediffDef.Named("WFP_Generic_Radiation");
             DamageInfo smote = new DamageInfo(DamageDefOf.Burn, 40f, 1f, -1f, base.pawn);
             List<Pawn> pawnsToOrb = new List<Pawn>();
 
@@ -110,7 +110,7 @@ namespace WarframePsycasts
                         {
                             // For enemies
                             pawn.TakeDamage(new DamageInfo(DamageDefOf.Burn, 8f, 1f, -1f, base.pawn));
-                            pawn.health.AddHediff(HediffDef.Named("WF_Generic_Radiation"));
+                            pawn.health.AddHediff(HediffDef.Named("WFP_Generic_Radiation"));
                         }
                     }
                 }
@@ -181,7 +181,7 @@ namespace WarframePsycasts
                     if (pawn.Faction != null && !pawn.Faction.HostileTo(base.pawn.Faction))
                     {
                         // For friends
-                        pawn.health.AddHediff(HediffDef.Named("WF_Generic_Healing"));
+                        pawn.health.AddHediff(HediffDef.Named("WFP_Generic_Healing"));
                     }
                 }
             }

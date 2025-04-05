@@ -51,4 +51,29 @@
         </subSounds>
 </SoundDef>
 
+<SoundDef>
+        <defName>WF_DreadMirrorShield_Sound</defName>
+        <context>MapOnly</context>
+        <eventNames/>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Clip">
+                        <clipPath>Milkwater_Garuda_Shield_Deploy</clipPath>
+                    </li>
+                </grains>
+                <volumeRange>
+                    <min>35</min>
+                    <max>40</max>
+                </volumeRange>
+                <pitchRange>
+                    <min>1.2</min>
+                    <max>1.25</max>
+                </pitchRange>
+                <sustainLoop>False</sustainLoop>
+            </li>
+        </subSounds>
+</SoundDef>
+
 </Defs>
